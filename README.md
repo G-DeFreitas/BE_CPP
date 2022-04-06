@@ -2,50 +2,71 @@
 
 
 ## Diagramme de classe
-@startuml
-title Boite à enigme - Diagramme de Classe
+![alt text](https://github.com/G-DeFreitas/BE_CPP/blob/main/dclass06041715.png)
 
+```
+@startuml title Boite à enigme - Diagramme de Classe
 
-class Jeu {
-  -std::vector<Enigme> liste
-  +void init()
-  +void loop()
+class Jeu  << principale >> { 
+-std::vector<Enigme> listeEnigme
+- int indexEnigme()
++void init() 
++void loop() 
+} 
+
+abstract class Enigme {
+-static int nbEnigme
+#std::string texteEnigme
+#virtual void poserEnigme() 
+#virtual void resolutionEnigme()
+} 
+
+class EnigmeSimon{
+-void jouerMelodie()
+-std::vector<char> vectMelodieRef
 }
-class Enigme {
-  -static int nbEnigme
-  -std::string speech
-  #virtual bool poserEnigme()
-}
-class EnigmeSimon
-class EnigmeRetourner
+class EnigmeRetourner 
 class EnigmeLumiere
 
-class Capteur{
-+ Data acquire()
-}
-class Bouton
+abstract class Capteur {
+#virtual data acquisition() 
+} 
+
+class Bouton 
 class Accelerometre
+class CapteurLuminosite
 
-class Afficher{
-+ void afficherMsg()
+class Afficher {
+void afficherMsg() 
 }
+
 class EcranLCD
+class Buzzer
 
-class Data
+class data << (U,orchid) >> {
+bool booleen
+char caractere
+int  entier
+float flottant
+}
 
-Jeu "1" *-up- " " Enigme: Composition
+Jeu "1" *-up- " " Enigme
+Enigme "1" -up- "1" Afficher
 
-Enigme <|-down- EnigmeSimon: Inheritance
-Enigme <|-down- EnigmeRetourner: Inheritance
-Enigme <|-down- EnigmeLumiere: Inheritance
-Enigme "1" *-up- "many" Capteur: Compostion
+Enigme <|-down- EnigmeSimon
+Enigme <|-down- EnigmeRetourner
+Enigme <|-down- EnigmeLumiere
 
-Enigme "1" *-up- "1" Afficher: Compostion
+EnigmeRetourner "1" -up- "1"  Accelerometre
+EnigmeSimon     "1" -up- "4"  Bouton
+EnigmeSimon     "1" -up- "1"  Buzzer
+EnigmeLumiere   "1" -up- "1"  CapteurLuminosite
 
-EcranLCD "1" *-down- "1" Afficher: Compostion
+EcranLCD "1" *-down- "1" Afficher
 
+Capteur <|-down- Bouton
+Capteur <|-down- Accelerometre
+Capteur <|-down- CapteurLuminosite
 
-Capteur <|-down- Bouton: Inheritance
-Capteur <|-down- Accelerometre: Inheritance
-Capteur "1" *-up- "many" Data: Compostion
 @enduml
+```
