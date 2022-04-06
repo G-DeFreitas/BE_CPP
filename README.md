@@ -2,34 +2,40 @@
 
 
 ## Diagramme de classe
-![alt text](https://github.com/G-DeFreitas/BE_CPP/blob/main/dclass06041715.png)
+![alt text](https://github.com/G-DeFreitas/BE_CPP/blob/main/dclass.png)
 
 ```
 @startuml title Boite à enigme - Diagramme de Classe
 
 class Jeu  << principale >> { 
--std::vector<Enigme> listeEnigme
-- int indexEnigme()
+- std::vector<Enigme> listeEnigme
+- int indexEnigme
 +void init() 
 +void loop() 
 } 
 
+class Pins << (D,yellow) >> <<definitions>>
+
 abstract class Enigme {
--static int nbEnigme
+-static int nbEnigmes
 #std::string texteEnigme
 #virtual void poserEnigme() 
 #virtual void resolutionEnigme()
++Enigme()
++~Enigme()
 } 
 
-class EnigmeSimon{
+class EnigmeMelodie{
 -void jouerMelodie()
 -std::vector<char> vectMelodieRef
++ EnigmeMelodie(std::vector<char> vecteurRef)
 }
 class EnigmeRetourner 
 class EnigmeLumiere
 
 abstract class Capteur {
-#virtual data acquisition() 
+#virtual data acquisition()
++Capteur(char pin)
 } 
 
 class Bouton 
@@ -51,15 +57,17 @@ float flottant
 }
 
 Jeu "1" *-up- " " Enigme
+Jeu "1" -up- "1" Capteur
+Jeu "1" -up- "1" Afficher
 Enigme "1" -up- "1" Afficher
 
-Enigme <|-down- EnigmeSimon
+Enigme <|-down- EnigmeMelodie
 Enigme <|-down- EnigmeRetourner
 Enigme <|-down- EnigmeLumiere
 
 EnigmeRetourner "1" -up- "1"  Accelerometre
-EnigmeSimon     "1" -up- "4"  Bouton
-EnigmeSimon     "1" -up- "1"  Buzzer
+EnigmeMelodie     "1" -up- "4"  Bouton
+EnigmeMelodie     "1" -up- "1"  Buzzer
 EnigmeLumiere   "1" -up- "1"  CapteurLuminosite
 
 EcranLCD "1" *-down- "1" Afficher
