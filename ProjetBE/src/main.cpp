@@ -1,6 +1,6 @@
 #include <Arduino.h>
-
-#define TEMP_SENSOR_PIN A0
+#include "../include/Enigme.h"
+#include "../include/Pins.h"
 
 void setup() {
   // put your setup code here, to run once:
