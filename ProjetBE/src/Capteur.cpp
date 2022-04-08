@@ -3,5 +3,6 @@
 
 Capteur::Capteur(char pin)
 {
-    pinMode(pin, INPUT) ;
+    this->pin = pin;
+    pinMode(pin, INPUT);
 }

@@ -6,13 +6,25 @@
 class Enigme
 {
 private:
-    static int nbEnigmes ;
+    static int nbEnigmes;
+
 protected:
-    std::string texteEnigme ;
-    virtual void poserEnigme() = 0 ;
-    virtual void resolutionEnigme() = 0 ;
+    std::string texteEnigme;
+    virtual void poserEnigme() = 0;
+    virtual void resolutionEnigme() = 0;
+
 public:
+
+    /*
+    Usage  : Incrémente la Variable nbEnigmes
+    Testé  : Non
+    */
     Enigme();
+
+    /*
+    Usage  : Décrémente la Variable nbEnigmes
+    Testé  : Non
+    */
     ~Enigme();
 };
 

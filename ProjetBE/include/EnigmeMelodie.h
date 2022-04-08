@@ -7,10 +7,22 @@
 class EnigmeMelodie : public Enigme
 {
 private:
-    std::vector<char> vectMelodieRef ;
+    std::vector<char> vectMelodieRef;
+
 public:
+
+    /*
+    Usage       : Affecte la mélodie de référence
+    Argument    : Vecteur de notes (char) de référence pour la mélodie
+    Testé       : Non
+    */
     EnigmeMelodie(std::vector<char> vecteurRef);
-    void jouerMelodie() ;
+
+    /*
+    Usage       : Joue la mélodie de référence
+    Testé       : Non
+    */
+    void jouerMelodie();
 };
 
 #endif // ENIGME_MELODIE_H

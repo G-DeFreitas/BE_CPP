@@ -7,9 +7,7 @@
 class EnigmeLumiere : public Enigme
 {
 private:
-    
 public:
-    
 };
 
 #endif // ENIGME_LUMIERE_H

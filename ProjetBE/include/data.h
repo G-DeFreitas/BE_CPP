@@ -3,11 +3,10 @@
 
 union data
 {
-    bool booleen ;
-    char caractere ;
-    int entier ;
-    float flottant ;
+    bool booleen;
+    char caractere;
+    int entier;
+    float flottant;
 };
-
 
 #endif // DATA_H

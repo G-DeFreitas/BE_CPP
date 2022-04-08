@@ -2,16 +2,30 @@
 #define JEU_H
 
 #include <vector>
-#include "Enigme.h" 
+#include <map>
+#include <string>
+#include "Enigme.h"
+#include "Capteur.h"
 
 class Jeu
 {
 private:
-    std::vector<Enigme> listeEnigme ;
-    int indexEnigme ;
+    std::map<std::string,Capteur*> ensembleCapteur;
+    std::vector<Enigme> listeEnigme;
+    int indexEnigme;
+
 public:
-    void init() ;
-    void loop() ;
+    /*
+    Usage       : Initialise le Jeu
+    Testé       : Non
+    */
+    void init();
+
+    /*
+    Usage       : Déroulement du Jeu
+    Testé       : Non
+    */
+    void loop();
 };
 
 #endif // JEU_H

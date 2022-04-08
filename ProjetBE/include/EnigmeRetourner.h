@@ -7,9 +7,7 @@
 class EnigmeRetourner : public Enigme
 {
 private:
-    
 public:
-    
 };
 
 #endif // ENIGME_RETOURNER_H

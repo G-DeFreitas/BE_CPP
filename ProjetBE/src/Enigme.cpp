@@ -4,12 +4,12 @@
 
 Enigme::Enigme()
 {
-    nbEnigmes++ ;
+    nbEnigmes++;
 }
 
 Enigme::~Enigme()
 {
-    nbEnigmes-- ;
+    nbEnigmes--;
 }
 
-int Enigme::nbEnigmes = 0 ;
+int Enigme::nbEnigmes = 0;

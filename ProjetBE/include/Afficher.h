@@ -4,9 +4,7 @@
 class Afficher
 {
 private:
-    /* data */
 public:
-
 };
 
 #endif // AFFICHER_H
