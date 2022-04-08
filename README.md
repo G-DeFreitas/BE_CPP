@@ -8,6 +8,7 @@
 @startuml title Boite à enigme - Diagramme de Classe
 
 class Jeu  << principale >> { 
+- std::map<std::string,Capteur*> ensembleCapteur;
 - std::vector<Enigme> listeEnigme
 - int indexEnigme
 +void init() 
@@ -34,11 +35,15 @@ class EnigmeRetourner
 class EnigmeLumiere
 
 abstract class Capteur {
++char Pin
 #virtual data acquisition()
 +Capteur(char pin)
 } 
 
-class Bouton 
+class Bouton {
++data acquisition()
++Bouton(char pin)
+}
 class Accelerometre
 class CapteurLuminosite
 
