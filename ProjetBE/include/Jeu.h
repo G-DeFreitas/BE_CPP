@@ -26,6 +26,12 @@ public:
     Testé       : Non
     */
     void loop();
+
+    /*
+    Usage       : Destructeur des elements dynamiquements alloués (ensembleCapteur)
+    Testé       : Intestable
+    */
+    ~Jeu();
 };
 
 #endif // JEU_H
