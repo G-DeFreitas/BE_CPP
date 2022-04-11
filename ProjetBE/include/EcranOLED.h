@@ -7,7 +7,7 @@
 class EcranOLED : public Actionneur
 {
 private:
-    SeeedOLED ecran;
+    SeeedOLED ecran; // mettre affichage en friend
 
 public:
 };

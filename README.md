@@ -8,7 +8,8 @@
 @startuml title Boite à enigme - Diagramme de Classe
 
 class Jeu  << principale >> { 
-- std::map<std::string,Capteur*> ensembleCapteur;
+- std::map<std::string,Capteur*> ensembleCapteur
+- std::map<std::string,Actionneur*> ensembleActionneur
 - std::vector<Enigme> listeEnigme
 - int indexEnigme
 +void init() 
@@ -32,7 +33,10 @@ class EnigmeMelodie{
 + EnigmeMelodie(std::vector<char> vecteurRef)
 }
 class EnigmeRetourner 
-class EnigmeLumiere
+class EnigmeLumiere{
+- float seuilLuminosite
++ EnigmeLumiere(float seuil)
+}
 
 abstract class Capteur {
 +char Pin
@@ -41,17 +45,26 @@ abstract class Capteur {
 } 
 
 class Bouton {
-+data acquisition()
 +Bouton(char pin)
++data acquisition()
 }
+
 class Accelerometre
-class CapteurLuminosite
+class CapteurLuminosite{
++CapteurLuminosite(char pin)
++data acquisition()
+}
 
 class Afficher {
 void afficherMsg() 
 }
 
+
+abstract class Actionneur
 class EcranLCD
+class EcranOLED{
+    - SeeedOLED ecran
+}
 class Buzzer
 
 class data << (U,orchid) >> {
@@ -63,6 +76,7 @@ float flottant
 
 Jeu "1" *-up- " " Enigme
 Jeu "1" -up- "1" Capteur
+Jeu "1" -up- "1" Actionneur
 Jeu "1" -up- "1" Afficher
 Enigme "1" -up- "1" Afficher
 
@@ -76,6 +90,7 @@ EnigmeMelodie     "1" -up- "1"  Buzzer
 EnigmeLumiere   "1" -up- "1"  CapteurLuminosite
 
 EcranLCD "1" *-down- "1" Afficher
+EcranOLED "1" *-down- "1" Afficher
 
 Capteur <|-down- Bouton
 Capteur <|-down- Accelerometre

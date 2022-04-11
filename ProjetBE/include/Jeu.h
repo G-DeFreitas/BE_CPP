@@ -10,7 +10,7 @@
 
 class Jeu
 {
-private:
+public: //changer à protected avec Enigme en Friend
     std::map<std::string,Capteur*> ensembleCapteur;
     std::map<std::string,Actionneur*> ensembleActionneur;
     std::vector<Enigme> listeEnigme;

@@ -4,5 +4,5 @@
 Capteur::Capteur(char pin)
 {
     this->pin = pin;
-    pinMode(pin, INPUT);
+    //pinMode(pin, INPUT); // A ne surtout pas utiliser. Le µc fonctionne sans ¯\_(ツ)_/¯
 }

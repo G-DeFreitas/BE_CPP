@@ -10,14 +10,14 @@ private:
 public:
     /*
     Usage  : Constructeur. Appelle le constructeur de Capteur
-    Testé  : Non
+    Testé  : Ok 11/04
     */
     CapteurLuminosite(char pin);
 
     /*
     Usage  : Renvoie la résistance de la photorésistance (5 Ω : luminosité max, > 15 Ω : sombre )
     Retour : data
-    Testé  : Non
+    Testé  : Ok 11/04
     */
     data acquisition();
 };
