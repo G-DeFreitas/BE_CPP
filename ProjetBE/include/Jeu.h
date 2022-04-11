@@ -6,11 +6,13 @@
 #include <string>
 #include "Enigme.h"
 #include "Capteur.h"
+#include "Actionneur.h"
 
 class Jeu
 {
 private:
     std::map<std::string,Capteur*> ensembleCapteur;
+    std::map<std::string,Actionneur*> ensembleActionneur;
     std::vector<Enigme> listeEnigme;
     int indexEnigme;
 

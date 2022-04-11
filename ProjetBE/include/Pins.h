@@ -1,7 +1,11 @@
 #ifndef PINS_H
 #define PINS_H
 
-#define BOUTON_A 8
-// définir les pins correspondants aux capteurs et actionneurs
+// Pins fixés
+#define I2C_SCL  1
+#define I2C_SDA  2
+
+//Pins changeables
+#define BOUTON_A 8 // Pour l'exemple
 
 #endif // PINS_H
