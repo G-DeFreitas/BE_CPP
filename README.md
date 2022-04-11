@@ -56,15 +56,20 @@ class CapteurLuminosite{
 }
 
 class Afficher {
-void afficherMsg() 
+-SeeedOLED ecran;
+-int cursorX
+-int cursorY
++Afficher()
++void initEcran()
++void clearEcran()
++void printlnEcran(std::string s)
++void printEcran(std::string s)
 }
 
 
 abstract class Actionneur
 class EcranLCD
-class EcranOLED{
-    - SeeedOLED ecran
-}
+class seeedOLED
 class Buzzer
 
 class data << (U,orchid) >> {
@@ -89,12 +94,10 @@ EnigmeMelodie     "1" -up- "4"  Bouton
 EnigmeMelodie     "1" -up- "1"  Buzzer
 EnigmeLumiere   "1" -up- "1"  CapteurLuminosite
 
-Actionneur <|-down- EcranLCD
-Actionneur <|-down- EcranOLED
 Actionneur <|-down- Buzzer
 
 EcranLCD "1" *-down- "1" Afficher
-EcranOLED "1" *-down- "1" Afficher
+seeedOLED "1" *-down- "1" Afficher
 
 Capteur <|-down- Bouton
 Capteur <|-down- Accelerometre

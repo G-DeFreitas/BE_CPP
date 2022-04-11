@@ -191,7 +191,7 @@ void SeeedOLED::clearDisplay()
 {
     unsigned char i, j;
     sendCommand(SeeedOLED_Display_Off_Cmd); // display off
-    for (j = 0; j < 8; j++)
+    for (j = 0; j < 16; j++)
     {
         setTextXY(j, 0);
         {

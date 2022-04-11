@@ -1,8 +1,9 @@
 #include "..\include\Jeu.h"
 #include "..\include\Bouton.h"
 #include "..\include\Pins.h"
-#include "..\include\EcranOLED.h"
 #include "..\include\CapteurLuminosite.h"
+
+#include <Arduino.h>
 #include <map>
 #include <string>
 
@@ -11,8 +12,6 @@ void Jeu::init(){
     this->ensembleCapteur.insert({"BoutonA",boutonA});
     CapteurLuminosite *capteurLum = new CapteurLuminosite(A0);
     this->ensembleCapteur.insert({"CapteurLum",capteurLum}); 
-    // EcranOLED *ecranOled = new EcranOLED();
-    // this->ensembleActionneur.insert({"EcranOled",ecranOled});
 }
 
 void Jeu::loop(){
