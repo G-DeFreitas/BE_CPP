@@ -89,6 +89,10 @@ EnigmeMelodie     "1" -up- "4"  Bouton
 EnigmeMelodie     "1" -up- "1"  Buzzer
 EnigmeLumiere   "1" -up- "1"  CapteurLuminosite
 
+Actionneur <|-down- EcranLCD
+Actionneur <|-down- EcranOLED
+Actionneur <|-down- Buzzer
+
 EcranLCD "1" *-down- "1" Afficher
 EcranOLED "1" *-down- "1" Afficher
 
