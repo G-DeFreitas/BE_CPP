@@ -13,7 +13,7 @@ class Jeu
 public: //changer à protected avec Enigme en Friend
     std::map<std::string,Capteur*> ensembleCapteur;
     std::map<std::string,Actionneur*> ensembleActionneur;
-    std::vector<Enigme> listeEnigme;
+    std::map<int,Enigme*> listeEnigme; // changé de vector à map pour des raisons de visibilité de la classe fille lors de l'appel de methodes virtuelles
     int indexEnigme;
 
 public:

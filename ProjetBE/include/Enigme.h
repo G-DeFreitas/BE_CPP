@@ -10,6 +10,7 @@ private:
 
 protected:
     std::string texteEnigme;
+public:
     virtual void poserEnigme() = 0;
     virtual void resolutionEnigme() = 0;
 
