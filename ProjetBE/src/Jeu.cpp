@@ -3,6 +3,7 @@
 #include "..\include\Pins.h"
 #include "..\include\CapteurLuminosite.h"
 #include "..\include\EnigmeBouton.h"
+#include "..\include\EnigmeLumiere.h"
 
 #include <Arduino.h>
 #include <map>
@@ -13,16 +14,18 @@ void Jeu::init()
 {
     // Inititalisation des cpateurs
     Bouton *boutonA = new Bouton(BOUTON_A);
-    CapteurLuminosite *capteurLum = new CapteurLuminosite(A0);
+    CapteurLuminosite *capteurLum = new CapteurLuminosite(CAPTEUR_LUM);
 
     this->ensembleCapteur.insert({"BoutonA", boutonA});
     this->ensembleCapteur.insert({"CapteurLum", capteurLum});
 
     // Initialisation des actionneurs
 
-    //Initialisation des Enigmes
+    // Initialisation des Enigmes
     EnigmeBouton *enEchauffement = new EnigmeBouton(boutonA);
-    this->listeEnigme.insert({0,enEchauffement});
+    EnigmeLumiere *lumos = new EnigmeLumiere(capteurLum, 15.0);
+    this->listeEnigme.insert({0, enEchauffement});
+    this->listeEnigme.insert({1, lumos});
 }
 
 void Jeu::loop()

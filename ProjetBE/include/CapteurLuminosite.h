@@ -16,7 +16,7 @@ public:
 
     /*
     Usage  : Renvoie la résistance de la photorésistance (5 Ω : luminosité max, > 15 Ω : sombre )
-    Retour : data
+    Retour : data.flottant
     Testé  : Ok 11/04
     */
     data acquisition();

@@ -7,34 +7,33 @@ class Afficher
 private:
     SeeedOLED ecran;
     int cursorX;
-    int cursorY; //horizontale
+    int cursorY; // horizontal
 public:
-
     /*
-    Usage       : Cree un écran et initialise le curseur
+    Usage       : Créé un écran et initialise le curseur
     Testé       : Ok 11/04
     */
     Afficher();
 
     /*
-    Usage       : Initialisation de l'Ecran
+    Usage       : Initialisation de l'écran
     Testé       : Ok 11/04
     */
     void initEcran();
 
     /*
-    Usage       : Flush de l'ecran
+    Usage       : Flush de l'écran
     Testé       : Ok 11/04
     */
     void clearEcran();
 
     /*
-    Usage       : Affiche 256 caractères ASCII standards max sur l'ecran OLED. Termine par un retour chariot
+    Usage       : Affiche 256 caractères ASCII standards max sur l'écran OLED. Termine par un retour chariot
     Testé       : Ok 11/04
     */
     void printlnEcran(std::string s);
     /*
-    Usage       : Affiche 256 caractères ASCII standards max sur l'ecran OLED.
+    Usage       : Affiche 256 caractères ASCII standards max sur l'écran OLED.
     Testé       : Ok 11/04
     */
     void printEcran(std::string s);

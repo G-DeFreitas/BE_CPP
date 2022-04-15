@@ -11,7 +11,7 @@ Afficher::Afficher()
 void Afficher::initEcran()
 {
     Wire.begin();
-    this->ecran.init();                                  // initialze SEEED OLED display
+    this->ecran.init();                                  // initialize SEEED OLED display
     this->ecran.setNormalDisplay();                      // Set display to normal mode (i.e non-inverse mode)
     this->ecran.setPageMode();                           // Set addressing mode to Page Mode
     this->ecran.setTextXY(this->cursorX, this->cursorY); // Set the cursor to Xth Page, Yth Column
@@ -50,6 +50,7 @@ void Afficher::printlnEcran(std::string s)
     this->cursorX++;
     this->ecran.setTextXY(this->cursorX, this->cursorY); // Set the cursor to Xth Page, Yth Column
 }
+
 void Afficher::printEcran(std::string s)
 {
 
