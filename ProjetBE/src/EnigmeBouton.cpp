@@ -23,15 +23,9 @@ void EnigmeBouton::poserEnigme()
 
 void EnigmeBouton::resolutionEnigme()
 {
-    // while (digitalRead(8)==0){}       //La lecture du GPIO fait un segfault
-    // while (GPIO_INPUT_GET(15) ==0){}  //La lecture du GPIO fait un segfault
-
-    /*while (this->bouton->acquisition().entier == 0) // Segfault
+    while (this->bouton->acquisition().entier == 0)
     {
-    }*/
-
-    /*while (this->bouton->acquisition().entier != 0) // Pas Segfault
-    {
+        Serial.println("Nope");
     }
-    Serial.println("Houra");*/
+    Serial.println("Houra");
 }

@@ -10,8 +10,8 @@ private:
     Bouton *bouton;
 public:
     EnigmeBouton(Bouton *b);
-    void poserEnigme();
-    void resolutionEnigme();
+    virtual void poserEnigme();
+    virtual void resolutionEnigme();
 };
 
 

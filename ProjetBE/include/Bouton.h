@@ -18,7 +18,7 @@ Testé  : Non
     Retour : data
     Testé  : Non
     */
-    data acquisition();
+    virtual data acquisition();
 };
 
 #endif

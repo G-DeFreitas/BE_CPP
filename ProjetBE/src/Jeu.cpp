@@ -38,7 +38,7 @@ Jeu::~Jeu()
     for (it = this->ensembleCapteur.begin(); it != this->ensembleCapteur.end(); it++)
     {
         it2 = it;
-        delete it->second;
+        delete it2->second;
         this->ensembleCapteur.erase(it2);
     }
 
