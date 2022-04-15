@@ -1,13 +1,13 @@
 #include "../include/EnigmeBouton.h"
 #include <string>
-#include "Afficher.h"
-#include "Enigme.h"
-#include "Bouton.h"
+#include "..\include\Afficher.h"
+#include "..\include\Enigme.h"
+#include "..\include\Bouton.h"
 
 #include <Arduino.h>
 #include "user_interface.h"
 
-EnigmeBouton::EnigmeBouton(Bouton *b) : Enigme::Enigme()
+EnigmeBouton::EnigmeBouton(Afficher *ecran, Bouton *b) : Enigme::Enigme(ecran)
 {
     this->bouton = b;
     this->texteEnigme = "Comme echauffement, un test de coordination. Une simple pression, sur le front, c'est tout ce qu'il faut pour vérifier ta cognition";
@@ -15,17 +15,15 @@ EnigmeBouton::EnigmeBouton(Bouton *b) : Enigme::Enigme()
 
 void EnigmeBouton::poserEnigme()
 {
-    Afficher Aff;
-    Aff.initEcran();
-    Aff.clearEcran();
-    Aff.printlnEcran(this->texteEnigme);
+    this->ecran->clearEcran();
+    this->ecran->printlnEcran(this->texteEnigme);
 }
 
 void EnigmeBouton::resolutionEnigme()
 {
     while (this->bouton->acquisition().entier == 0)
     {
-        Serial.println("Nope");
     }
-    Serial.println("Houra");
+    this->ecran->clearEcran();
+    this->ecran->printlnEcran("Houra En 1 terminee");
 }

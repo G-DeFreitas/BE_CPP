@@ -16,7 +16,7 @@ public:
     Argument    : Vecteur de notes (char) de référence pour la mélodie
     Testé       : Non
     */
-    EnigmeMelodie(std::vector<char> vecteurRef);
+    EnigmeMelodie(Afficher *ecran,std::vector<char> vecteurRef);
 
     /*
     Usage       : Joue la mélodie de référence

@@ -8,5 +8,6 @@ data Bouton::acquisition()
 {
     data d;
     d.entier = digitalRead(this->pin);
+    yield();
     return d;
 }
