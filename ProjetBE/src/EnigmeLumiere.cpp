@@ -1,5 +1,6 @@
 #include "..\include\EnigmeLumiere.h"
 #include "..\include\Pins.h"
+#include "..\include\data.h"
 #include <string>
 #include <Arduino.h>
 #include <iostream> // A supprimer une fois mise en place de l'écran
@@ -7,8 +8,7 @@
 EnigmeLumiere::EnigmeLumiere(CapteurLuminosite *captLum, float seuilLum) : Enigme::Enigme()
 {
     this->capteurLum = captLum;
-    // this->texteEnigme = "Je suis si présente dans ta vie que tu ne me remarques que quand je suis absente. Sans moi, tes peurs resurgissent...  Chasse mon ennemi pour avancer !";
-    this->texteEnigme = "Attention, lancement Enigme Lumiere" ;
+    this->texteEnigme = "Je suis si présente dans ta vie que tu ne me remarques que quand je suis absente. Sans moi, tes peurs resurgissent...  Chasse mon ennemi pour avancer !";
     this->seuilLuminosite = seuilLum;
 }
 
@@ -19,14 +19,12 @@ void EnigmeLumiere::poserEnigme()
 
 void EnigmeLumiere::resolutionEnigme()
 {
-    int valeurCapteur;
-    float resistanceCapteur;
+    data valeurCapteur ;
     bool enigme_validee = false;
     while (!enigme_validee)
     {
-        valeurCapteur = analogRead(CAPTEUR_LUM);
-        resistanceCapteur = (float)(1023 - valeurCapteur) * 10 / valeurCapteur;
-        if (resistanceCapteur >= this->seuilLuminosite)
+        valeurCapteur = this->capteurLum->acquisition() ;
+        if (valeurCapteur.flottant >= this->seuilLuminosite)
         {
             enigme_validee = true; // Inverser inégalité pour après, mais plus facile à tester comme ça
         }
