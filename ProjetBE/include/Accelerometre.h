@@ -6,6 +6,9 @@
 
 class Accelerometre : public Capteur
 {
+private :
+float X_out, Y_out, Z_out; // Outputs
+
 public:
     /*
     Usage       : Initialisation de l'accelerometre

@@ -2,8 +2,10 @@
 #include "..\include\Bouton.h"
 #include "..\include\Pins.h"
 #include "..\include\CapteurLuminosite.h"
+#include "..\include\Accelerometre.h"
 #include "..\include\EnigmeBouton.h"
 #include "..\include\EnigmeLumiere.h"
+#include "..\include\EnigmeRetourner.h"
 #include "..\include\Afficher.h"
 
 #include <Arduino.h>
@@ -18,9 +20,14 @@ void Jeu::init()
     // Inititalisation des capteurs
     Bouton *boutonA = new Bouton(BOUTON_A);
     CapteurLuminosite *capteurLum = new CapteurLuminosite(CAPTEUR_LUM);
+    Accelerometre *accelero = new Accelerometre;
 
     this->ensembleCapteur.insert({"BoutonA", boutonA});
     this->ensembleCapteur.insert({"CapteurLum", capteurLum});
+    this->ensembleCapteur.insert({"Accelero", accelero});
+
+    //Initialisation de l'accelerometre
+    accelero->initAccelerometre();
 
     // Initialisation des actionneurs
     Afficher *ecran = new Afficher();
@@ -29,9 +36,11 @@ void Jeu::init()
     // Initialisation des Enigmes
     EnigmeBouton *enEchauffement = new EnigmeBouton(ecran, boutonA);
     EnigmeLumiere *enLumos = new EnigmeLumiere(ecran, capteurLum, SEUIL_LUM);
+    EnigmeRetourner *enRetourner = new EnigmeRetourner(ecran, accelero);
 
     this->listeEnigme.insert({0, enEchauffement});
     this->listeEnigme.insert({1, enLumos});
+    this->listeEnigme.insert({2, enRetourner});
 
     //Initialisation de l'ecran
     ecran->initEcran();

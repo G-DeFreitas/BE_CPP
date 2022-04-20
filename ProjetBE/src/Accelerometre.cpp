@@ -40,28 +40,29 @@ void Accelerometre::initAccelerometre()
 
 data Accelerometre::acquisition()
 {
-    float X_out, Y_out, Z_out; // Outputs
-    float roll, pitch, rollF, pitchF = 0;
+    float roll, pitch;
+    float rollF = 0 ;
+    float pitchF = 0;
     data d;
-    yield();
 
     for (int k = 0; k < 100; k++)
     {
+        yield();
         // === Read acceleromter data === //
         Wire.beginTransmission(ADXL345);
         Wire.write(0x32); // Start with register 0x32 (ACCEL_XOUT_H)
         Wire.endTransmission(false);
         Wire.requestFrom(ADXL345, 6, true);       // Read 6 registers total, each axis value is stored in 2 registers
-        X_out = (Wire.read() | Wire.read() << 8); // X-axis value
-        X_out = X_out / 256;                      // For a range of +-2g, we need to divide the raw values by 256, according to the datasheet
-        Y_out = (Wire.read() | Wire.read() << 8); // Y-axis value
-        Y_out = Y_out / 256;
-        Z_out = (Wire.read() | Wire.read() << 8); // Z-axis value
-        Z_out = Z_out / 256;
+        this->X_out = (Wire.read() | Wire.read() << 8); // X-axis value
+        this->X_out = this->X_out / 256;                      // For a range of +-2g, we need to divide the raw values by 256, according to the datasheet
+        this->Y_out = (Wire.read() | Wire.read() << 8); // Y-axis value
+        this->Y_out = this->Y_out / 256;
+        this->Z_out = (Wire.read() | Wire.read() << 8); // Z-axis value
+        this->Z_out = this->Z_out / 256;
 
         // Calculate Roll and Pitch (rotation around X-axis, rotation around Y-axis)
-        roll = atan(Y_out / sqrt(pow(X_out, 2) + pow(Z_out, 2))) * 180 / PI;
-        pitch = atan(-1 * X_out / sqrt(pow(Y_out, 2) + pow(Z_out, 2))) * 180 / PI;
+        roll = atan(this->Y_out / sqrt(pow(this->X_out, 2) + pow(this->Z_out, 2))) * 180 / PI;
+        pitch = atan(-1 * this->X_out / sqrt(pow(this->Y_out, 2) + pow(this->Z_out, 2))) * 180 / PI;
 
         // Low-pass filter
         rollF = 0.94 * rollF + 0.06 * roll;
