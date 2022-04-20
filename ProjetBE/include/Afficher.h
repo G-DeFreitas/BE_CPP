@@ -1,9 +1,8 @@
 #ifndef AFFICHER_H
 #define AFFICHER_H
 #include "SeeedOLED.h"
-#include "Actionneur.h"
 #include <string>
-class Afficher : public Actionneur
+class Afficher
 {
 private:
     SeeedOLED ecran;

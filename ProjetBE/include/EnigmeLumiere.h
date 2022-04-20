@@ -3,7 +3,6 @@
 
 #include "Enigme.h"
 #include "CapteurLuminosite.h"
-#include "Afficher.h"
 
 class EnigmeLumiere : public Enigme
 {
@@ -12,7 +11,7 @@ private:
     float seuilLuminosite;
 
 public:
-    EnigmeLumiere(Afficher *ecran, CapteurLuminosite *captLum, float seuilLum);
+    EnigmeLumiere(CapteurLuminosite *captLum, float seuilLum);
     virtual void poserEnigme();
     virtual void resolutionEnigme();
 };

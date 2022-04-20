@@ -7,6 +7,6 @@
 #define CAPTEUR_LUM A0
 
 //Pins changeables
-#define BOUTON_A 14 //D5
+#define BOUTON_A 8 // Pour l'exemple
 
 #endif // PINS_H
