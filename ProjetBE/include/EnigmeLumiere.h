@@ -12,8 +12,22 @@ private:
     float seuilLuminosite;
 
 public:
+    /*
+    Usage       : Définit le seuil de luminosité du capteur
+    Testé       : Ok 20/04
+    */
     EnigmeLumiere(Afficher *ecran, CapteurLuminosite *captLum, float seuilLum);
+
+    /*
+    Usage       : Pose l'énigme
+    Testé       : Ok 20/04
+    */
     virtual void poserEnigme();
+
+    /*
+    Usage       : L'utilisateur doit allumer la lumière dans la boîte
+    Testé       : Ok 20/04
+    */
     virtual void resolutionEnigme();
 };
 
