@@ -11,9 +11,11 @@
 #include <string>
 #include <vector>
 
+#define SEUIL_LUM 15.0
+
 void Jeu::init()
 {
-    // Inititalisation des cpateurs
+    // Inititalisation des capteurs
     Bouton *boutonA = new Bouton(BOUTON_A);
     CapteurLuminosite *capteurLum = new CapteurLuminosite(CAPTEUR_LUM);
 
@@ -26,7 +28,7 @@ void Jeu::init()
     this->ensembleActionneur.insert({"Ecran", ecran});
     // Initialisation des Enigmes
     EnigmeBouton *enEchauffement = new EnigmeBouton(ecran, boutonA);
-    EnigmeLumiere *enLumos = new EnigmeLumiere(ecran, capteurLum, 15.0);
+    EnigmeLumiere *enLumos = new EnigmeLumiere(ecran, capteurLum, SEUIL_LUM);
 
     this->listeEnigme.insert({0, enEchauffement});
     this->listeEnigme.insert({1, enLumos});
