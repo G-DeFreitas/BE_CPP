@@ -6,24 +6,17 @@
 
 class Accelerometre : public Capteur
 {
-private:
 public:
     /*
-    Usage  : Constructeur. Appelle le constructeur de Capteur
-    Testé  : 
-    */
-    Accelerometre();
-
-    /*
-    Usage       : Initialisation de l'écran
-    Testé       : Ok 11/04
+    Usage       : Initialisation de l'accelerometre
+    Testé       :
     */
     void initAccelerometre();
 
     /*
-    Usage  : Renvoie la résistance de la photorésistance (5 Ω : luminosité max, > 15 Ω : sombre )
-    Retour : data.flottant
-    Testé  : 
+    Usage  : Renvoie deux valeurs flotantes qui permettent de déduire l'orientation de la boite
+    Retour : data.tab_float
+    Testé  :
     */
     data acquisition();
 };

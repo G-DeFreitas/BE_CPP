@@ -3,7 +3,6 @@
 #include "..\include\data.h"
 #include <string>
 #include <Arduino.h>
-#include <iostream> // A supprimer une fois mise en place de l'écran
 
 EnigmeLumiere::EnigmeLumiere(Afficher *ecran, CapteurLuminosite *captLum, float seuilLum) : Enigme::Enigme(ecran)
 {
@@ -27,7 +26,7 @@ void EnigmeLumiere::resolutionEnigme()
         valeurCapteur = this->capteurLum->acquisition();
         if (valeurCapteur.flottant <= this->seuilLuminosite)
         {
-            enigme_validee = true; // Inverser inégalité pour après, mais plus facile à tester comme ça
+            enigme_validee = true;
         }
     }
     this->ecran->printlnEcran(" ");
