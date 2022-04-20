@@ -3,7 +3,12 @@
 
 #include <vector>
 #include "Enigme.h"
+#include "Buzzer.h"
 #include "Bouton.h"
+
+#define NOTE_A 50
+#define NOTE_B 90
+#define NOTE_C 255
 
 class EnigmeMelodie : public Enigme
 {
@@ -12,6 +17,7 @@ private:
     Bouton *boutonA ;
     Bouton *boutonB ;
     Bouton *boutonC ;
+    Buzzer *buzzer  ;
 
 public:
 
@@ -20,7 +26,7 @@ public:
     Argument    : Vecteur de notes (char) de référence pour la mélodie
     Testé       : Non
     */
-    EnigmeMelodie(Afficher *ecran,std::vector<char> vecteurRef, Bouton * bA, Bouton *bB, Bouton * bC);
+    EnigmeMelodie(Afficher *ecran,std::vector<char> vecteurRef, Bouton * bA, Bouton *bB, Bouton * bC, Buzzer * buzz);
 
     /*
     Usage       : Joue la mélodie de référence

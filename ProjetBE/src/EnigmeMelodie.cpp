@@ -1,25 +1,47 @@
 #include "..\include\EnigmeMelodie.h"
 
-EnigmeMelodie::EnigmeMelodie(Afficher *ecran, std::vector<char> vecteurRef, Bouton *bA, Bouton *bB, Bouton *bC) : Enigme::Enigme(ecran)
+EnigmeMelodie::EnigmeMelodie(Afficher *ecran, std::vector<char> vecteurRef, Bouton *bA, Bouton *bB, Bouton *bC, Buzzer *buzz) : Enigme::Enigme(ecran)
 {
     this->vectMelodieRef = vecteurRef;
     this->texteEnigme = "Laisse toi porter par la musique bb";
     this->boutonA = bA;
     this->boutonB = bB;
     this->boutonC = bC;
+    this->buzzer = buzz;
 }
 
 void EnigmeMelodie::poserEnigme()
 {
     this->ecran->clearEcran();
     this->ecran->printlnEcran(this->texteEnigme);
+    this->jouerMelodie();
+}
+
+void EnigmeMelodie::jouerMelodie()
+{
+    std::vector<char>::iterator it;
+    for (it = this->vectMelodieRef.begin(); it != this->vectMelodieRef.end(); it++)
+    {
+        if (*it == 'A')
+        {
+            this->buzzer->jouerNote(NOTE_A);
+        }
+        else if (*it == 'B')
+        {
+            this->buzzer->jouerNote(NOTE_B);
+        }
+        else // *it = 'C'
+        {
+            this->buzzer->jouerNote(NOTE_C);
+        }
+    }
 }
 
 void EnigmeMelodie::resolutionEnigme()
 {
     bool enigme_validee = false;
     bool acquisition = false;
-    bool en_attente = true ;
+    bool en_attente = true;
     std::vector<char> vecteur_test;
     std::vector<char>::iterator it_ref;
     it_ref = this->vectMelodieRef.begin();
@@ -32,18 +54,21 @@ void EnigmeMelodie::resolutionEnigme()
             if (this->boutonA->acquisition().entier != 0)
             { // appui bouton A
                 vecteur_test.push_back('A');
+                this->buzzer->jouerNote(NOTE_A);
                 acquisition = true;
                 en_attente = false;
             }
             else if (this->boutonB->acquisition().entier != 0)
             { // appui bouton B
                 vecteur_test.push_back('B');
+                this->buzzer->jouerNote(NOTE_B);
                 acquisition = true;
                 en_attente = false;
             }
             else if (this->boutonC->acquisition().entier != 0)
             { // appui bouton C
                 vecteur_test.push_back('C');
+                this->buzzer->jouerNote(NOTE_C);
                 acquisition = true;
                 en_attente = false;
             }
