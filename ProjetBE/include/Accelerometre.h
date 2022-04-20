@@ -6,8 +6,8 @@
 
 class Accelerometre : public Capteur
 {
-private :
-float X_out, Y_out, Z_out; // Outputs
+private:
+    float X_out, Y_out, Z_out; // Outputs
 
 public:
     /*
@@ -17,9 +17,9 @@ public:
     void initAccelerometre();
 
     /*
-    Usage  : Renvoie deux valeurs flotantes qui permettent de déduire l'orientation de la boite
-    Retour : data.tab_float
-    Testé  :
+    Usage       : Renvoie deux valeurs flotantes qui permettent de déduire l'orientation de la boite
+    Retour      : data.tab_float
+    Testé       :
     */
     data acquisition();
 };

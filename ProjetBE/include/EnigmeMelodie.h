@@ -14,35 +14,34 @@ class EnigmeMelodie : public Enigme
 {
 private:
     std::vector<char> vectMelodieRef;
-    Bouton *boutonA ;
-    Bouton *boutonB ;
-    Bouton *boutonC ;
-    Buzzer *buzzer  ;
+    Bouton *boutonA;
+    Bouton *boutonB;
+    Bouton *boutonC;
+    Buzzer *buzzer;
 
 public:
-
     /*
     Usage       : Affecte la mélodie de référence
     Argument    : Vecteur de notes (char) de référence pour la mélodie
-    Testé       : Non
+    Testé       : Ok 20/04
     */
-    EnigmeMelodie(Afficher *ecran,std::vector<char> vecteurRef, Bouton * bA, Bouton *bB, Bouton * bC, Buzzer * buzz);
+    EnigmeMelodie(Afficher *ecran, std::vector<char> vecteurRef, Bouton *bA, Bouton *bB, Bouton *bC, Buzzer *buzz);
 
     /*
     Usage       : Joue la mélodie de référence
-    Testé       : Non
+    Testé       : Ok 20/04
     */
     void jouerMelodie();
 
     /*
     Usage       : Pose l'énigme
-    Testé       : Non
+    Testé       : Ok 20/04
     */
     virtual void poserEnigme();
 
     /*
     Usage       : L'utilisateur doit rejouer la musique de référence avec les boutons
-    Testé       : Non
+    Testé       : Ok 20/04
     */
     virtual void resolutionEnigme();
 };

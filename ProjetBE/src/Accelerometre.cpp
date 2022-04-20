@@ -41,7 +41,7 @@ void Accelerometre::initAccelerometre()
 data Accelerometre::acquisition()
 {
     float roll, pitch;
-    float rollF = 0 ;
+    float rollF = 0;
     float pitchF = 0;
     data d;
 
@@ -52,9 +52,9 @@ data Accelerometre::acquisition()
         Wire.beginTransmission(ADXL345);
         Wire.write(0x32); // Start with register 0x32 (ACCEL_XOUT_H)
         Wire.endTransmission(false);
-        Wire.requestFrom(ADXL345, 6, true);       // Read 6 registers total, each axis value is stored in 2 registers
+        Wire.requestFrom(ADXL345, 6, true);             // Read 6 registers total, each axis value is stored in 2 registers
         this->X_out = (Wire.read() | Wire.read() << 8); // X-axis value
-        this->X_out = this->X_out / 256;                      // For a range of +-2g, we need to divide the raw values by 256, according to the datasheet
+        this->X_out = this->X_out / 256;                // For a range of +-2g, we need to divide the raw values by 256, according to the datasheet
         this->Y_out = (Wire.read() | Wire.read() << 8); // Y-axis value
         this->Y_out = this->Y_out / 256;
         this->Z_out = (Wire.read() | Wire.read() << 8); // Z-axis value

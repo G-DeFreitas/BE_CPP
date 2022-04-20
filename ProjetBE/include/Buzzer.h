@@ -6,19 +6,19 @@
 class Buzzer : public Actionneur
 {
 private:
-    char pin ;
+    char pin;
+
 public:
     /*
     Usage  : Constructeur. Associe numéro de pin
-    Testé  : Non
+    Testé  : Ok 20/04
     */
-    Buzzer(char pin) ;
+    Buzzer(char pin);
     /*
     Usage  : Joue la note en argument
-    Testé  : Non
+    Testé  : Ok 20/04
     */
-    void jouerNote(char note) ;
+    void jouerNote(char note);
 };
-
 
 #endif // BUZZER_H

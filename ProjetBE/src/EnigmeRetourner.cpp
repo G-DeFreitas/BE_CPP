@@ -6,7 +6,7 @@
 EnigmeRetourner::EnigmeRetourner(Afficher *ecran, Accelerometre *accelero) : Enigme::Enigme(ecran)
 {
     this->accelero = accelero;
-    this->texteEnigme = "Une enigme mieux doit être écrite mais le but est de retourner la boite";
+    this->texteEnigme = "Une meilleure enigme doit etre ecrite mais le but est de retourner la boite";
 }
 
 void EnigmeRetourner::poserEnigme()
@@ -22,11 +22,11 @@ void EnigmeRetourner::resolutionEnigme()
     while (!enigme_validee)
     {
         valeurCapteur = this->accelero->acquisition();
-        if ((valeurCapteur.tab_float[0] > SEUIL_INF_1) && (valeurCapteur.tab_float[0] < SEUIL_SUP_1) && (valeurCapteur.tab_float[1] > SEUIL_INF_2) && (valeurCapteur.tab_float[1] < SEUIL_SUP_2) )
+        if ((valeurCapteur.tab_float[0] > SEUIL_INF_1) && (valeurCapteur.tab_float[0] < SEUIL_SUP_1) && (valeurCapteur.tab_float[1] > SEUIL_INF_2) && (valeurCapteur.tab_float[1] < SEUIL_SUP_2))
         {
             enigme_validee = true; // la boite a été retournée
         }
     }
     this->ecran->printlnEcran(" ");
-    this->ecran->printlnEcran("Bravo, Enigme retournagationement terminee");
+    this->ecran->printlnEcran("Bravo, Enigme 3 terminee");
 }

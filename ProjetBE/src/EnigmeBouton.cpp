@@ -24,6 +24,6 @@ void EnigmeBouton::resolutionEnigme()
     while (this->bouton->acquisition().entier == 0)
     {
     }
-    this->ecran->clearEcran();
-    this->ecran->printlnEcran("Houra Enigme 1 terminee");
+    this->ecran->printlnEcran(" ");
+    this->ecran->printlnEcran("Bravo, Enigme 1 terminee");
 }

@@ -6,7 +6,9 @@
 #include "..\include\EnigmeBouton.h"
 #include "..\include\EnigmeLumiere.h"
 #include "..\include\EnigmeRetourner.h"
+#include "..\include\EnigmeMelodie.h"
 #include "..\include\Afficher.h"
+#include "..\include\Buzzer.h"
 
 #include <Arduino.h>
 #include <map>
@@ -15,41 +17,59 @@
 
 #define SEUIL_LUM 15.0
 
+std::vector<char> melodie = {'A', 'A', 'C', 'B', 'A'};
+
 void Jeu::init()
 {
     // Inititalisation des capteurs
     Bouton *boutonA = new Bouton(BOUTON_A);
+    Bouton *boutonB = new Bouton(BOUTON_B);
+    Bouton *boutonC = new Bouton(BOUTON_C);
     CapteurLuminosite *capteurLum = new CapteurLuminosite(CAPTEUR_LUM);
     Accelerometre *accelero = new Accelerometre;
 
     this->ensembleCapteur.insert({"BoutonA", boutonA});
+    this->ensembleCapteur.insert({"BoutonB", boutonB});
+    this->ensembleCapteur.insert({"BoutonC", boutonC});
     this->ensembleCapteur.insert({"CapteurLum", capteurLum});
     this->ensembleCapteur.insert({"Accelero", accelero});
 
-    //Initialisation de l'accelerometre
+    // Initialisation de l'accelerometre
     accelero->initAccelerometre();
 
     // Initialisation des actionneurs
     Afficher *ecran = new Afficher();
+    Buzzer *buzzer = new Buzzer(BUZZER);
+
+    // Initialisation de l'ecran
+    ecran->initEcran();
+    ecran->clearEcran();
 
     this->ensembleActionneur.insert({"Ecran", ecran});
+    this->ensembleActionneur.insert({"Buzzer", buzzer});
+
     // Initialisation des Enigmes
     EnigmeBouton *enEchauffement = new EnigmeBouton(ecran, boutonA);
     EnigmeLumiere *enLumos = new EnigmeLumiere(ecran, capteurLum, SEUIL_LUM);
     EnigmeRetourner *enRetourner = new EnigmeRetourner(ecran, accelero);
+    EnigmeMelodie *enMelodie = new EnigmeMelodie(ecran, melodie, boutonA, boutonB, boutonC, buzzer);
 
     this->listeEnigme.insert({0, enEchauffement});
     this->listeEnigme.insert({1, enLumos});
     this->listeEnigme.insert({2, enRetourner});
-
-    //Initialisation de l'ecran
-    ecran->initEcran();
-    ecran->clearEcran();
-
+    this->listeEnigme.insert({3, enMelodie});
 }
 
 void Jeu::loop()
 {
+    std::map<int, Enigme *>::iterator indEnigme;
+    for (indEnigme = listeEnigme.begin() ; indEnigme != listeEnigme.end() ; indEnigme++)
+    {
+        indEnigme->second->poserEnigme();
+        indEnigme->second->resolutionEnigme();
+        delay(2000);
+    }
+
 }
 
 Jeu::~Jeu()

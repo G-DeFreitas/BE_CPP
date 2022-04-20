@@ -7,6 +7,4 @@ protected:
 public:
 };
 
-
-
 #endif

@@ -43,7 +43,7 @@ void EnigmeMelodie::resolutionEnigme()
     bool acquisition = false;
     bool en_attente = true;
     std::vector<char> vecteur_test;
-    std::vector<char>::iterator it_ref;
+    std::vector<char>::iterator it_ref, i;
     it_ref = this->vectMelodieRef.begin();
 
     while (!enigme_validee)
@@ -85,7 +85,8 @@ void EnigmeMelodie::resolutionEnigme()
         if (acquisition)
         {
             acquisition = false;
-            if (*vecteur_test.end() == *it_ref)
+
+            if (vecteur_test.back() == *it_ref)
             {
                 it_ref++; // Pas d'erreur : on attend la prochaine acquisition
             }
@@ -103,4 +104,7 @@ void EnigmeMelodie::resolutionEnigme()
             }
         }
     }
+
+    this->ecran->printlnEcran(" ");
+    this->ecran->printlnEcran("Bravo, Enigme 4 terminee");
 }
