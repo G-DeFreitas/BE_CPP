@@ -6,6 +6,8 @@
 class Bouton : public Capteur
 {
 private:
+    char pin;
+    
 public:
     /*
 Usage  : Constructeur. Appelle le constructeur de Capteur

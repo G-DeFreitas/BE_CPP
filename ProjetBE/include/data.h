@@ -7,6 +7,7 @@ union data
     char caractere;
     int entier;
     float flottant;
+    float tab_float[2];
 };
 
 #endif // DATA_H

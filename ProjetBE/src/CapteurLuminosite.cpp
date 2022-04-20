@@ -1,8 +1,10 @@
 #include "..\include\CapteurLuminosite.h"
 #include <Arduino.h>
 
-CapteurLuminosite::CapteurLuminosite(char pin) : Capteur::Capteur(pin)
+CapteurLuminosite::CapteurLuminosite(char pin)
 {
+    this->pin = pin;
+    //pinMode(pin, INPUT); // A ne surtout pas utiliser. Le µc fonctionne sans ¯\_(ツ)_/¯
 }
 
 data CapteurLuminosite::acquisition()
