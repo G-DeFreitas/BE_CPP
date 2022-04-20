@@ -10,7 +10,7 @@
 EnigmeBouton::EnigmeBouton(Afficher *ecran, Bouton *b) : Enigme::Enigme(ecran)
 {
     this->bouton = b;
-    this->texteEnigme = "Comme echauffement, un test de coordination. Une simple pression, sur le front, c'est tout ce qu'il faut pour vérifier ta cognition";
+    this->texteEnigme = "Comme echauffement, un test de coordination. Une simple pression sur le front, c'est tout ce qu'il faut pour verifier ta cognition";
 }
 
 void EnigmeBouton::poserEnigme()
@@ -25,5 +25,5 @@ void EnigmeBouton::resolutionEnigme()
     {
     }
     this->ecran->clearEcran();
-    this->ecran->printlnEcran("Houra En 1 terminee");
+    this->ecran->printlnEcran("Houra Enigme 1 terminee");
 }
