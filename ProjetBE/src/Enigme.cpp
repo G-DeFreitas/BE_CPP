@@ -2,8 +2,9 @@
 #include "..\include\Afficher.h"
 #include <string>
 
-Enigme::Enigme()
+Enigme::Enigme(Afficher *ecran)
 {
+    this->ecran = ecran;
     nbEnigmes++;
 }
 

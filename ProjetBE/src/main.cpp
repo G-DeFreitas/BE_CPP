@@ -14,7 +14,6 @@ Jeu boiteEnigme;
 
 void setup()
 {
-  Afficher Aff;
   Serial.begin(9600, SERIAL_8N1);
   Serial.println("-Lancement setup-");
   boiteEnigme.init();

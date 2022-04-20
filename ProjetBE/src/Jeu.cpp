@@ -4,6 +4,7 @@
 #include "..\include\CapteurLuminosite.h"
 #include "..\include\EnigmeBouton.h"
 #include "..\include\EnigmeLumiere.h"
+#include "..\include\Afficher.h"
 
 #include <Arduino.h>
 #include <map>
@@ -20,12 +21,20 @@ void Jeu::init()
     this->ensembleCapteur.insert({"CapteurLum", capteurLum});
 
     // Initialisation des actionneurs
+    Afficher *ecran = new Afficher();
 
+    this->ensembleActionneur.insert({"Ecran", ecran});
     // Initialisation des Enigmes
-    EnigmeBouton *enEchauffement = new EnigmeBouton(boutonA);
-    EnigmeLumiere *lumos = new EnigmeLumiere(capteurLum, 15.0);
+    EnigmeBouton *enEchauffement = new EnigmeBouton(ecran, boutonA);
+    EnigmeLumiere *enLumos = new EnigmeLumiere(ecran, capteurLum, 15.0);
+
     this->listeEnigme.insert({0, enEchauffement});
-    this->listeEnigme.insert({1, lumos});
+    this->listeEnigme.insert({1, enLumos});
+
+    //Initialisation de l'ecran
+    ecran->initEcran();
+    ecran->clearEcran();
+
 }
 
 void Jeu::loop()
@@ -46,7 +55,7 @@ Jeu::~Jeu()
     for (it3 = this->ensembleActionneur.begin(); it3 != this->ensembleActionneur.end(); it3++)
     {
         it4 = it3;
-        delete it3->second;
+        delete it4->second;
         this->ensembleActionneur.erase(it4);
     }
 }
