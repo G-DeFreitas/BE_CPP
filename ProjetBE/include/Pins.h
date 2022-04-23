@@ -7,10 +7,10 @@
 #define CAPTEUR_LUM A0
 
 // Pins changeables
-#define BOUTON_A D8
-#define BOUTON_B D7
-#define BOUTON_C D6
-#define BOUTON_D D5
+#define BOUTON_A D5
+#define BOUTON_B D6
+#define BOUTON_Y D7
+#define BOUTON_X D8
 #define BUZZER D3
 
 #endif // PINS_H

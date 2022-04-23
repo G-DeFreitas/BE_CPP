@@ -18,6 +18,9 @@
 #include <vector>
 
 #define SEUIL_LUM 15.0
+#define LABY1 "#--------- ----#"
+#define LABY2 "|    - ||-  - ||"
+#define LABY LABY1+LABY2
 
 std::vector<char> melodie = {'A', 'A', 'C', 'B', 'A'};
 
@@ -26,14 +29,15 @@ void Jeu::init()
     // Inititalisation des capteurs
     Bouton *boutonA = new Bouton(BOUTON_A);
     Bouton *boutonB = new Bouton(BOUTON_B);
-    Bouton *boutonC = new Bouton(BOUTON_C);
-    Bouton *boutonD = new Bouton(BOUTON_D);
+    Bouton *boutonX = new Bouton(BOUTON_X);
+    Bouton *boutonY = new Bouton(BOUTON_Y);
     CapteurLuminosite *capteurLum = new CapteurLuminosite(CAPTEUR_LUM);
     Accelerometre *accelero = new Accelerometre;
 
     this->ensembleCapteur.insert({"BoutonA", boutonA});
     this->ensembleCapteur.insert({"BoutonB", boutonB});
-    this->ensembleCapteur.insert({"BoutonC", boutonC});
+    this->ensembleCapteur.insert({"BoutonX", boutonX});
+    this->ensembleCapteur.insert({"BoutonY", boutonY});
     this->ensembleCapteur.insert({"CapteurLum", capteurLum});
     this->ensembleCapteur.insert({"Accelero", accelero});
 
@@ -58,29 +62,29 @@ void Jeu::init()
     std::string texteEnMelodie = "Laisse toi porter par la musique bb";
     std::string texteEnLaby = "Aide-moi a sortir de la chambre!"; // 32 caractères obligatoirement
 
-    std::string laby1 = "#--------- ----#" ;
-    std::string laby2 = "|    - ||-  - ||" ;
-    std::string laby3 = "|-- |   |  -|  |" ;
-    std::string laby4 = "|   | | -|  |- |" ;
-    std::string laby5 = "| |-  |  |-   -|" ;
-    std::string laby6 = "| |  |-- |  |  |" ;
-    std::string laby7 = "|  | |    --   |" ;
-    std::string laby8 = "|- | ---   |- -|" ;
-    std::string laby9 = "|      ||  |  ||" ;
-    std::string laby10= "| |-   |     |-|" ;
-    std::string laby11= "| | -|  -|---| |" ;
-    std::string laby12= "|    |   |   | |" ;
-    std::string laby13= "| |    |   |   |" ;
-    std::string laby14= "# -------------#" ;
-    std::string laby = laby1+laby2+laby3+laby4+laby5+laby6+laby7+laby8+laby9+laby10+laby11+laby12+laby13+laby14;
+    // std::string laby1 = "#--------- ----#" ;
+    // std::string laby2 = "|    - ||-  - ||" ;
+    // std::string laby3 = "|-- |   |  -|  |" ;
+    // std::string laby4 = "|   | | -|  |- |" ;
+    // std::string laby5 = "| |-  |  |-   -|" ;
+    // std::string laby6 = "| |  |-- |  |  |" ;
+    // std::string laby7 = "|  | |    --   |" ;
+    // std::string laby8 = "|- | ---   |- -|" ;
+    // std::string laby9 = "|      ||  |  ||" ;
+    // std::string laby10= "| |-   |     |-|" ;
+    // std::string laby11= "| | -|  -|---| |" ;
+    // std::string laby12= "|    |   |   | |" ;
+    // std::string laby13= "| |    |   |   |" ;
+    // std::string laby14= "# -------------#" ;
+    // std::string laby = laby1+laby2+laby3+laby4+laby5+laby6+laby7+laby8+laby9+laby10+laby11+laby12+laby13+laby14;
 
     // Initialisation des Enigmes
     EnigmeInitiale *enBienvenue = new EnigmeInitiale(ecran, boutonA, buzzer, texteEnBienvenue);
     EnigmeBouton *enEchauffement = new EnigmeBouton(ecran, boutonA, texteEnEchauffement);
     EnigmeLumiere *enLumos = new EnigmeLumiere(ecran, capteurLum, SEUIL_LUM, texteEnLumos);
     EnigmeRetourner *enRetourner = new EnigmeRetourner(ecran, accelero, texteEnRetourner);
-    EnigmeMelodie *enMelodie = new EnigmeMelodie(ecran, melodie, boutonA, boutonB, boutonC, buzzer, texteEnMelodie);
-    EnigmeLabyrinthe *enLaby = new EnigmeLabyrinthe(ecran, boutonA, boutonB, boutonC, boutonD, texteEnLaby, laby);
+    EnigmeMelodie *enMelodie = new EnigmeMelodie(ecran, melodie, boutonA, boutonB, boutonX, buzzer, texteEnMelodie);
+    EnigmeLabyrinthe *enLaby = new EnigmeLabyrinthe(ecran, boutonA, boutonB, boutonX, boutonY, texteEnLaby, (std::string) LABY);
 
     this->listeEnigme.insert({0, enBienvenue});    
     this->listeEnigme.insert({1, enEchauffement});
