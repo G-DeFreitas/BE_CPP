@@ -7,6 +7,7 @@
 #include "..\include\EnigmeLumiere.h"
 #include "..\include\EnigmeRetourner.h"
 #include "..\include\EnigmeMelodie.h"
+#include "..\include\EnigmeLabyrinthe.h"
 #include "..\include\EnigmeInitiale.h"
 #include "..\include\Afficher.h"
 #include "..\include\Buzzer.h"
@@ -26,6 +27,7 @@ void Jeu::init()
     Bouton *boutonA = new Bouton(BOUTON_A);
     Bouton *boutonB = new Bouton(BOUTON_B);
     Bouton *boutonC = new Bouton(BOUTON_C);
+    Bouton *boutonD = new Bouton(BOUTON_D);
     CapteurLuminosite *capteurLum = new CapteurLuminosite(CAPTEUR_LUM);
     Accelerometre *accelero = new Accelerometre;
 
@@ -54,6 +56,23 @@ void Jeu::init()
     std::string texteEnLumos = "Je suis si presente dans ta vie que tu ne me remarques que quand je suis absente. Sans moi, tes peurs resurgissent...  Chasse mon ennemi pour avancer !";
     std::string texteEnRetourner = "Une meilleure enigme doit etre ecrite mais le but est de retourner la boite";
     std::string texteEnMelodie = "Laisse toi porter par la musique bb";
+    std::string texteEnLaby = "Aide-moi a sortir de la chambre!"; // 32 caractères obligatoirement
+
+    std::string laby1 = "#--------- ----#" ;
+    std::string laby2 = "|    - ||-  - ||" ;
+    std::string laby3 = "|-- |   |  -|  |" ;
+    std::string laby4 = "|   | | -|  |- |" ;
+    std::string laby5 = "| |-  |  |-   -|" ;
+    std::string laby6 = "| |  |-- |  |  |" ;
+    std::string laby7 = "|  | |    --   |" ;
+    std::string laby8 = "|- | ---   |- -|" ;
+    std::string laby9 = "|      ||  |  ||" ;
+    std::string laby10= "| |-   |     |-|" ;
+    std::string laby11= "| | -|  -|---| |" ;
+    std::string laby12= "|    |   |   | |" ;
+    std::string laby13= "| |    |   |   |" ;
+    std::string laby14= "# -------------#" ;
+    std::string laby = laby1+laby2+laby3+laby4+laby5+laby6+laby7+laby8+laby9+laby10+laby11+laby12+laby13+laby14;
 
     // Initialisation des Enigmes
     EnigmeInitiale *enBienvenue = new EnigmeInitiale(ecran, boutonA, buzzer, texteEnBienvenue);
@@ -61,12 +80,14 @@ void Jeu::init()
     EnigmeLumiere *enLumos = new EnigmeLumiere(ecran, capteurLum, SEUIL_LUM, texteEnLumos);
     EnigmeRetourner *enRetourner = new EnigmeRetourner(ecran, accelero, texteEnRetourner);
     EnigmeMelodie *enMelodie = new EnigmeMelodie(ecran, melodie, boutonA, boutonB, boutonC, buzzer, texteEnMelodie);
+    EnigmeLabyrinthe *enLaby = new EnigmeLabyrinthe(ecran, boutonA, boutonB, boutonC, boutonD, texteEnLaby, laby);
 
     this->listeEnigme.insert({0, enBienvenue});    
     this->listeEnigme.insert({1, enEchauffement});
     this->listeEnigme.insert({2, enLumos});
     this->listeEnigme.insert({3, enRetourner});
     this->listeEnigme.insert({4, enMelodie});
+    this->listeEnigme.insert({5, enLaby});
 }
 
 void Jeu::loop()
