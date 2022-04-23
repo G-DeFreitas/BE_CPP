@@ -7,10 +7,9 @@
 #include <Arduino.h>
 #include "user_interface.h"
 
-EnigmeBouton::EnigmeBouton(Afficher *ecran, Bouton *b) : Enigme::Enigme(ecran)
+EnigmeBouton::EnigmeBouton(Afficher *ecran, Bouton *b, std::string texte) : Enigme::Enigme(ecran, texte)
 {
     this->bouton = b;
-    this->texteEnigme = "Comme echauffement, un test de coordination. Une simple pression sur le front, c'est tout ce qu'il faut pour verifier ta cognition";
 }
 
 void EnigmeBouton::poserEnigme()

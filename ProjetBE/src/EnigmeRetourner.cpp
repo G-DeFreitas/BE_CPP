@@ -3,10 +3,9 @@
 #include <string>
 #include <Arduino.h>
 
-EnigmeRetourner::EnigmeRetourner(Afficher *ecran, Accelerometre *accelero) : Enigme::Enigme(ecran)
+EnigmeRetourner::EnigmeRetourner(Afficher *ecran, Accelerometre *accelero, std::string texte) : Enigme::Enigme(ecran, texte)
 {
     this->accelero = accelero;
-    this->texteEnigme = "Une meilleure enigme doit etre ecrite mais le but est de retourner la boite";
 }
 
 void EnigmeRetourner::poserEnigme()

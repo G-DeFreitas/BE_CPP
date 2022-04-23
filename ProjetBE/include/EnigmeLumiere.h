@@ -16,7 +16,7 @@ public:
     Usage       : Définit le seuil de luminosité du capteur
     Testé       : Ok 20/04
     */
-    EnigmeLumiere(Afficher *ecran, CapteurLuminosite *captLum, float seuilLum);
+    EnigmeLumiere(Afficher *ecran, CapteurLuminosite *captLum, float seuilLum, std::string texte);
 
     /*
     Usage       : Pose l'énigme

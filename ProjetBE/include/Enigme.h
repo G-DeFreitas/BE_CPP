@@ -23,7 +23,7 @@ public:
     Usage  : Incrémente la Variable nbEnigmes et donne la ref de l'affichage
     Testé  : Non
     */
-    Enigme(Afficher *ecran);
+    Enigme(Afficher *ecran, std::string texte);
 
     /*
     Usage  : Décrémente la Variable nbEnigmes

@@ -13,7 +13,7 @@ private:
     Buzzer *buzzer;
 
 public:
-    EnigmeInitiale(Afficher *ecran, Bouton *b, Buzzer *buzz);
+    EnigmeInitiale(Afficher *ecran, Bouton *b, Buzzer *buzz, std::string texte);
     /*
     Usage  : Affiche message de bienvenue
     Testé  : Non

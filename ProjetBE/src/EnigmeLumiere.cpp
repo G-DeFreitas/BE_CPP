@@ -4,10 +4,9 @@
 #include <string>
 #include <Arduino.h>
 
-EnigmeLumiere::EnigmeLumiere(Afficher *ecran, CapteurLuminosite *captLum, float seuilLum) : Enigme::Enigme(ecran)
+EnigmeLumiere::EnigmeLumiere(Afficher *ecran, CapteurLuminosite *captLum, float seuilLum, std::string texte) : Enigme::Enigme(ecran, texte)
 {
     this->capteurLum = captLum;
-    this->texteEnigme = "Je suis si presente dans ta vie que tu ne me remarques que quand je suis absente. Sans moi, tes peurs resurgissent...  Chasse mon ennemi pour avancer !";
     this->seuilLuminosite = seuilLum;
 }
 

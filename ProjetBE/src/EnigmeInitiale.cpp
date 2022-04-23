@@ -6,11 +6,10 @@
 #include <Arduino.h>
 #include <string>
 
-EnigmeInitiale::EnigmeInitiale(Afficher *ecran, Bouton *b, Buzzer *buzz) : Enigme::Enigme(ecran)
+EnigmeInitiale::EnigmeInitiale(Afficher *ecran, Bouton *b, Buzzer *buzz, std::string texte) : Enigme::Enigme(ecran, texte)
 {
     this->bouton = b;
     this->buzzer = buzz;
-    this->texteEnigme = "Appuyez sur le bouton A pour demarrer une nouvelle partie";
 }
 
 void EnigmeInitiale::poserEnigme()

@@ -11,7 +11,7 @@ private:
     Bouton *bouton;
 
 public:
-    EnigmeBouton(Afficher *ecran, Bouton *b);
+    EnigmeBouton(Afficher *ecran, Bouton *b, std::string texte);
     /*
     Usage  : Pose l'enigme du bouton
     Testé  : OK 16/04

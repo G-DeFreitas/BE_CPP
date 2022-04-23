@@ -49,12 +49,18 @@ void Jeu::init()
     this->ensembleActionneur.insert({"Ecran", ecran});
     this->ensembleActionneur.insert({"Buzzer", buzzer});
 
+    std::string texteEnBienvenue = "Appuyez sur le bouton A pour demarrer une nouvelle partie" ;
+    std::string texteEnEchauffement = "Comme echauffement, un test de coordination. Une simple pression sur le front, c'est tout ce qu'il faut pour verifier ta cognition";
+    std::string texteEnLumos = "Je suis si presente dans ta vie que tu ne me remarques que quand je suis absente. Sans moi, tes peurs resurgissent...  Chasse mon ennemi pour avancer !";
+    std::string texteEnRetourner = "Une meilleure enigme doit etre ecrite mais le but est de retourner la boite";
+    std::string texteEnMelodie = "Laisse toi porter par la musique bb";
+
     // Initialisation des Enigmes
-    EnigmeInitiale *enBienvenue = new EnigmeInitiale(ecran, boutonA, buzzer);
-    EnigmeBouton *enEchauffement = new EnigmeBouton(ecran, boutonA);
-    EnigmeLumiere *enLumos = new EnigmeLumiere(ecran, capteurLum, SEUIL_LUM);
-    EnigmeRetourner *enRetourner = new EnigmeRetourner(ecran, accelero);
-    EnigmeMelodie *enMelodie = new EnigmeMelodie(ecran, melodie, boutonA, boutonB, boutonC, buzzer);
+    EnigmeInitiale *enBienvenue = new EnigmeInitiale(ecran, boutonA, buzzer, texteEnBienvenue);
+    EnigmeBouton *enEchauffement = new EnigmeBouton(ecran, boutonA, texteEnEchauffement);
+    EnigmeLumiere *enLumos = new EnigmeLumiere(ecran, capteurLum, SEUIL_LUM, texteEnLumos);
+    EnigmeRetourner *enRetourner = new EnigmeRetourner(ecran, accelero, texteEnRetourner);
+    EnigmeMelodie *enMelodie = new EnigmeMelodie(ecran, melodie, boutonA, boutonB, boutonC, buzzer, texteEnMelodie);
 
     this->listeEnigme.insert({0, enBienvenue});    
     this->listeEnigme.insert({1, enEchauffement});

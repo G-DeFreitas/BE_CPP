@@ -1,9 +1,8 @@
 #include "..\include\EnigmeMelodie.h"
 
-EnigmeMelodie::EnigmeMelodie(Afficher *ecran, std::vector<char> vecteurRef, Bouton *bA, Bouton *bB, Bouton *bC, Buzzer *buzz) : Enigme::Enigme(ecran)
+EnigmeMelodie::EnigmeMelodie(Afficher *ecran, std::vector<char> vecteurRef, Bouton *bA, Bouton *bB, Bouton *bC, Buzzer *buzz, std::string texte) : Enigme::Enigme(ecran, texte)
 {
     this->vectMelodieRef = vecteurRef;
-    this->texteEnigme = "Laisse toi porter par la musique bb";
     this->boutonA = bA;
     this->boutonB = bB;
     this->boutonC = bC;

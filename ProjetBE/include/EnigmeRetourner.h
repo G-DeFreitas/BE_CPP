@@ -17,7 +17,7 @@ private:
     Accelerometre *accelero;
 
 public:
-    EnigmeRetourner(Afficher *ecran, Accelerometre *accelero);
+    EnigmeRetourner(Afficher *ecran, Accelerometre *accelero, std::string texte);
     virtual void poserEnigme();
     virtual void resolutionEnigme();
 };

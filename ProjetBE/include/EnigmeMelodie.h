@@ -25,7 +25,7 @@ public:
     Argument    : Vecteur de notes (char) de référence pour la mélodie
     Testé       : Ok 20/04
     */
-    EnigmeMelodie(Afficher *ecran, std::vector<char> vecteurRef, Bouton *bA, Bouton *bB, Bouton *bC, Buzzer *buzz);
+    EnigmeMelodie(Afficher *ecran, std::vector<char> vecteurRef, Bouton *bA, Bouton *bB, Bouton *bC, Buzzer *buzz, std::string texte);
 
     /*
     Usage       : Joue la mélodie de référence
