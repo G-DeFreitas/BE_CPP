@@ -11,7 +11,6 @@
 
 // Variables globales
 Jeu boiteEnigme;
-int partieJouee = 0;
 
 void setup()
 {
@@ -31,12 +30,9 @@ void setup()
 void loop()
 {
   Serial.println("-Iteration Loop-");
-  if (!partieJouee)
-  {
-    boiteEnigme.loop();
-    partieJouee = 1 ;
-  }
-  
+
+  boiteEnigme.loop();
+
   // Clignotement par sécurité
   digitalWrite(LED_BUILTIN, LOW);
   delay(200);

@@ -7,6 +7,7 @@
 #include "..\include\EnigmeLumiere.h"
 #include "..\include\EnigmeRetourner.h"
 #include "..\include\EnigmeMelodie.h"
+#include "..\include\EnigmeInitiale.h"
 #include "..\include\Afficher.h"
 #include "..\include\Buzzer.h"
 
@@ -49,15 +50,17 @@ void Jeu::init()
     this->ensembleActionneur.insert({"Buzzer", buzzer});
 
     // Initialisation des Enigmes
+    EnigmeInitiale *enBienvenue = new EnigmeInitiale(ecran, boutonA, buzzer);
     EnigmeBouton *enEchauffement = new EnigmeBouton(ecran, boutonA);
     EnigmeLumiere *enLumos = new EnigmeLumiere(ecran, capteurLum, SEUIL_LUM);
     EnigmeRetourner *enRetourner = new EnigmeRetourner(ecran, accelero);
     EnigmeMelodie *enMelodie = new EnigmeMelodie(ecran, melodie, boutonA, boutonB, boutonC, buzzer);
 
-    this->listeEnigme.insert({0, enEchauffement});
-    this->listeEnigme.insert({1, enLumos});
-    this->listeEnigme.insert({2, enRetourner});
-    this->listeEnigme.insert({3, enMelodie});
+    this->listeEnigme.insert({0, enBienvenue});    
+    this->listeEnigme.insert({1, enEchauffement});
+    this->listeEnigme.insert({2, enLumos});
+    this->listeEnigme.insert({3, enRetourner});
+    this->listeEnigme.insert({4, enMelodie});
 }
 
 void Jeu::loop()

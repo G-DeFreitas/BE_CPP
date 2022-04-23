@@ -9,7 +9,8 @@
 // Pins changeables
 #define BOUTON_A D8
 #define BOUTON_B D7
-#define BOUTON_C D5
-#define BUZZER D6
+#define BOUTON_C D6
+#define BOUTON_D D5
+#define BUZZER D3
 
 #endif // PINS_H
