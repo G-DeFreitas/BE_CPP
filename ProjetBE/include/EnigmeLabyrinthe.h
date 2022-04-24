@@ -5,15 +5,15 @@
 #include "Afficher.h"
 #include "Bouton.h"
 
-#define LIGNE_MAX 14
+#define LIGNE_MAX 16
 #define COLONNE_MAX 16
-#define X_SORTIE 0
+#define X_SORTIE 2
 #define Y_SORTIE 10
 
 class EnigmeLabyrinthe : public Enigme
 {
 private:
-    char labyrinthe [LIGNE_MAX][COLONNE_MAX]; // 14 lignes, 16 colonnes
+    std::string labyrinthe;
     Bouton *boutonA;
     Bouton *boutonB;
     Bouton *boutonX;
@@ -23,7 +23,7 @@ private:
 
 public:
     EnigmeLabyrinthe(Afficher *ecran, Bouton *bA, Bouton *bB, Bouton *bX, Bouton *bY, std::string texte, std::string laby);
-    void printLabyrinthe();
+    bool caseEstLibre (int dX, int dY);
     virtual void poserEnigme();
     virtual void resolutionEnigme();
 };

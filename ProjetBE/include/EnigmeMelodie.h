@@ -8,7 +8,8 @@
 
 #define NOTE_A 50
 #define NOTE_B 90
-#define NOTE_C 255
+#define NOTE_X 255
+#define NOTE_Y 130
 
 class EnigmeMelodie : public Enigme
 {
@@ -16,7 +17,8 @@ private:
     std::vector<char> vectMelodieRef;
     Bouton *boutonA;
     Bouton *boutonB;
-    Bouton *boutonC;
+    Bouton *boutonX;
+    Bouton *boutonY;
     Buzzer *buzzer;
 
 public:
@@ -25,7 +27,7 @@ public:
     Argument    : Vecteur de notes (char) de référence pour la mélodie
     Testé       : Ok 20/04
     */
-    EnigmeMelodie(Afficher *ecran, std::vector<char> vecteurRef, Bouton *bA, Bouton *bB, Bouton *bC, Buzzer *buzz, std::string texte);
+    EnigmeMelodie(Afficher *ecran, std::vector<char> vecteurRef, Bouton *bA, Bouton *bB, Bouton *bX, Bouton *bY, Buzzer *buzz, std::string texte);
 
     /*
     Usage       : Joue la mélodie de référence

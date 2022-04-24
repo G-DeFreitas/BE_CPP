@@ -76,3 +76,9 @@ void Afficher::printEcran(std::string s)
     this->ecran.putString(sp.c_str()); // Print the String
     this->cursorY = sp.length();
 }
+
+void Afficher::setXY(unsigned char Row, unsigned char Column, char caractere)
+{
+    this->ecran.setTextXY(Row, Column);
+    this->ecran.putChar(caractere);
+}

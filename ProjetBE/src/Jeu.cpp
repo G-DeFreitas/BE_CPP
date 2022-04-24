@@ -18,11 +18,23 @@
 #include <vector>
 
 #define SEUIL_LUM 15.0
-#define LABY1 "#--------- ----#"
-#define LABY2 "|    - ||-  - ||"
-#define LABY LABY1+LABY2
+#define L1 "#--------- ----#"
+#define L2 "|    - ||-  - ||"
+#define L3 "|-- |   |  -|  |"
+#define L4 "|   | | -|  |- |"
+#define L5 "| |-  |  |-   -|"
+#define L6 "| |  |-- |  |  |"
+#define L7 "|  | |    --   |"
+#define L8 "|- | ---   |- -|"
+#define L9 "|      ||  |  ||"
+#define L10 "|---   |     |-|"
+#define L11 "| | -|  -|---| |"
+#define L12 "|    |   |   | |"
+#define L13 "| |    |   |   |"
+#define L14 "# -------------#"
+#define LABY L1 + L2 + L3 + L4 + L5 + L6 + L7 + L8 + L9 + L10 + L11 + L12 + L13 + L14
 
-std::vector<char> melodie = {'A', 'A', 'C', 'B', 'A'};
+std::vector<char> melodie = {'Y', 'B', 'X', 'X', 'A', 'B'}; // 130 90 255 255 130 50 90
 
 void Jeu::init()
 {
@@ -55,38 +67,22 @@ void Jeu::init()
     this->ensembleActionneur.insert({"Ecran", ecran});
     this->ensembleActionneur.insert({"Buzzer", buzzer});
 
-    std::string texteEnBienvenue = "Appuyez sur le bouton A pour demarrer une nouvelle partie" ;
+    std::string texteEnBienvenue = "Appuyez sur le bouton A pour demarrer une nouvelle partie";
     std::string texteEnEchauffement = "Comme echauffement, un test de coordination. Une simple pression sur le front, c'est tout ce qu'il faut pour verifier ta cognition";
     std::string texteEnLumos = "Je suis si presente dans ta vie que tu ne me remarques que quand je suis absente. Sans moi, tes peurs resurgissent...  Chasse mon ennemi pour avancer !";
     std::string texteEnRetourner = "Une meilleure enigme doit etre ecrite mais le but est de retourner la boite";
     std::string texteEnMelodie = "Laisse toi porter par la musique bb";
     std::string texteEnLaby = "Aide-moi a sortir de la chambre!"; // 32 caractères obligatoirement
 
-    // std::string laby1 = "#--------- ----#" ;
-    // std::string laby2 = "|    - ||-  - ||" ;
-    // std::string laby3 = "|-- |   |  -|  |" ;
-    // std::string laby4 = "|   | | -|  |- |" ;
-    // std::string laby5 = "| |-  |  |-   -|" ;
-    // std::string laby6 = "| |  |-- |  |  |" ;
-    // std::string laby7 = "|  | |    --   |" ;
-    // std::string laby8 = "|- | ---   |- -|" ;
-    // std::string laby9 = "|      ||  |  ||" ;
-    // std::string laby10= "| |-   |     |-|" ;
-    // std::string laby11= "| | -|  -|---| |" ;
-    // std::string laby12= "|    |   |   | |" ;
-    // std::string laby13= "| |    |   |   |" ;
-    // std::string laby14= "# -------------#" ;
-    // std::string laby = laby1+laby2+laby3+laby4+laby5+laby6+laby7+laby8+laby9+laby10+laby11+laby12+laby13+laby14;
-
     // Initialisation des Enigmes
     EnigmeInitiale *enBienvenue = new EnigmeInitiale(ecran, boutonA, buzzer, texteEnBienvenue);
     EnigmeBouton *enEchauffement = new EnigmeBouton(ecran, boutonA, texteEnEchauffement);
     EnigmeLumiere *enLumos = new EnigmeLumiere(ecran, capteurLum, SEUIL_LUM, texteEnLumos);
     EnigmeRetourner *enRetourner = new EnigmeRetourner(ecran, accelero, texteEnRetourner);
-    EnigmeMelodie *enMelodie = new EnigmeMelodie(ecran, melodie, boutonA, boutonB, boutonX, buzzer, texteEnMelodie);
-    EnigmeLabyrinthe *enLaby = new EnigmeLabyrinthe(ecran, boutonA, boutonB, boutonX, boutonY, texteEnLaby, (std::string) LABY);
+    EnigmeMelodie *enMelodie = new EnigmeMelodie(ecran, melodie, boutonA, boutonB, boutonX, boutonY, buzzer, texteEnMelodie);
+    EnigmeLabyrinthe *enLaby = new EnigmeLabyrinthe(ecran, boutonA, boutonB, boutonX, boutonY, texteEnLaby, (std::string)LABY);
 
-    this->listeEnigme.insert({0, enBienvenue});    
+    this->listeEnigme.insert({0, enBienvenue});
     this->listeEnigme.insert({1, enEchauffement});
     this->listeEnigme.insert({2, enLumos});
     this->listeEnigme.insert({3, enRetourner});
@@ -97,13 +93,12 @@ void Jeu::init()
 void Jeu::loop()
 {
     std::map<int, Enigme *>::iterator indEnigme;
-    for (indEnigme = listeEnigme.begin() ; indEnigme != listeEnigme.end() ; indEnigme++)
+    for (indEnigme = listeEnigme.begin(); indEnigme != listeEnigme.end(); indEnigme++)
     {
         indEnigme->second->poserEnigme();
         indEnigme->second->resolutionEnigme();
         delay(2000);
     }
-
 }
 
 Jeu::~Jeu()

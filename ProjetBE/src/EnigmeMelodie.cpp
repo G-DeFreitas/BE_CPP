@@ -1,11 +1,12 @@
 #include "..\include\EnigmeMelodie.h"
 
-EnigmeMelodie::EnigmeMelodie(Afficher *ecran, std::vector<char> vecteurRef, Bouton *bA, Bouton *bB, Bouton *bC, Buzzer *buzz, std::string texte) : Enigme::Enigme(ecran, texte)
+EnigmeMelodie::EnigmeMelodie(Afficher *ecran, std::vector<char> vecteurRef, Bouton *bA, Bouton *bB, Bouton *bX, Bouton *bY, Buzzer *buzz, std::string texte) : Enigme::Enigme(ecran, texte)
 {
     this->vectMelodieRef = vecteurRef;
     this->boutonA = bA;
     this->boutonB = bB;
-    this->boutonC = bC;
+    this->boutonX = bX;
+    this->boutonY = bY;
     this->buzzer = buzz;
 }
 
@@ -29,9 +30,13 @@ void EnigmeMelodie::jouerMelodie()
         {
             this->buzzer->jouerNote(NOTE_B);
         }
-        else // *it = 'C'
+        else if (*it == 'X')
         {
-            this->buzzer->jouerNote(NOTE_C);
+            this->buzzer->jouerNote(NOTE_X);
+        }
+        else // *it == 'Y'
+        {
+            this->buzzer->jouerNote(NOTE_Y);
         }
     }
 }
@@ -64,17 +69,24 @@ void EnigmeMelodie::resolutionEnigme()
                 acquisition = true;
                 en_attente = false;
             }
-            else if (this->boutonC->acquisition().entier != 0)
-            { // appui bouton C
-                vecteur_test.push_back('C');
-                this->buzzer->jouerNote(NOTE_C);
+            else if (this->boutonX->acquisition().entier != 0)
+            { // appui bouton X
+                vecteur_test.push_back('X');
+                this->buzzer->jouerNote(NOTE_X);
+                acquisition = true;
+                en_attente = false;
+            }
+            else if (this->boutonY->acquisition().entier != 0)
+            { // appui bouton Y
+                vecteur_test.push_back('Y');
+                this->buzzer->jouerNote(NOTE_Y);
                 acquisition = true;
                 en_attente = false;
             }
         }
         else
         {
-            if (this->boutonA->acquisition().entier == 0 && this->boutonB->acquisition().entier == 0 && this->boutonC->acquisition().entier == 0)
+            if (this->boutonA->acquisition().entier == 0 && this->boutonB->acquisition().entier == 0 && this->boutonX->acquisition().entier == 0 && this->boutonY->acquisition().entier == 0)
             {
                 en_attente = true;
             }
@@ -94,6 +106,7 @@ void EnigmeMelodie::resolutionEnigme()
                 // Il y a eu erreur -> réinitialisation
                 it_ref = this->vectMelodieRef.begin();
                 vecteur_test.clear();
+                delay(200);
                 this->jouerMelodie();
             }
 
