@@ -8,6 +8,7 @@
 #include "..\include\EnigmeRetourner.h"
 #include "..\include\EnigmeMelodie.h"
 #include "..\include\EnigmeLabyrinthe.h"
+#include "..\include\EnigmeCode.h"
 #include "..\include\EnigmeInitiale.h"
 #include "..\include\Afficher.h"
 #include "..\include\Buzzer.h"
@@ -35,6 +36,8 @@
 #define LABY L1 + L2 + L3 + L4 + L5 + L6 + L7 + L8 + L9 + L10 + L11 + L12 + L13 + L14
 
 std::vector<char> melodie = {'Y', 'B', 'X', 'X', 'A', 'B'}; // 130 90 255 255 130 50 90
+char code [4] = {'5', '6', '4', '2'};
+
 
 void Jeu::init()
 {
@@ -72,7 +75,8 @@ void Jeu::init()
     std::string texteEnLumos = "Je suis si presente dans ta vie que tu ne me remarques que quand je suis absente. Sans moi, tes peurs resurgissent...  Chasse mon ennemi pour avancer !";
     std::string texteEnRetourner = "Une meilleure enigme doit etre ecrite mais le but est de retourner la boite";
     std::string texteEnMelodie = "Laisse toi porter par la musique bb";
-    std::string texteEnLaby = "Aide-moi a sortir de la chambre!"; // 32 caractères obligatoirement
+    std::string texteEnLaby = "Aide-moi a sortir de la chambre!"; // entre 16 et 32 caractères obligatoirement
+    std::string texteEnCode = "C'est quoi mon code de telephone deja ?"; 
 
     // Initialisation des Enigmes
     EnigmeInitiale *enBienvenue = new EnigmeInitiale(ecran, boutonA, buzzer, texteEnBienvenue);
@@ -81,6 +85,7 @@ void Jeu::init()
     EnigmeRetourner *enRetourner = new EnigmeRetourner(ecran, accelero, texteEnRetourner);
     EnigmeMelodie *enMelodie = new EnigmeMelodie(ecran, melodie, boutonA, boutonB, boutonX, boutonY, buzzer, texteEnMelodie);
     EnigmeLabyrinthe *enLaby = new EnigmeLabyrinthe(ecran, boutonA, boutonB, boutonX, boutonY, texteEnLaby, (std::string)LABY);
+    EnigmeCode *enCode = new EnigmeCode(ecran, code, boutonA, boutonB, boutonX, boutonY, texteEnCode);
 
     this->listeEnigme.insert({0, enBienvenue});
     this->listeEnigme.insert({1, enEchauffement});
@@ -88,6 +93,8 @@ void Jeu::init()
     this->listeEnigme.insert({3, enRetourner});
     this->listeEnigme.insert({4, enMelodie});
     this->listeEnigme.insert({5, enLaby});
+    this->listeEnigme.insert({6, enCode});
+
 }
 
 void Jeu::loop()

@@ -40,9 +40,9 @@ public:
     void printEcran(std::string s);
     /*
     Usage       : Place le caractere aux coordonnées Row (X) et Column (Y) sur l'écran
-    Testé       : Non
+    Testé       : Ok 24/04
     */
-    void setXY(unsigned char Row, unsigned char Column, char caractere);
+    void putCharXY(unsigned char Row, unsigned char Column, char caractere);
 };
 
 #endif // AFFICHER_H

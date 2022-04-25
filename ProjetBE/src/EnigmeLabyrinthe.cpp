@@ -1,6 +1,5 @@
 #include "..\include\EnigmeLabyrinthe.h"
 #include <string>
-#include <iostream>
 
 EnigmeLabyrinthe::EnigmeLabyrinthe(Afficher *ecran, Bouton *bA, Bouton *bB, Bouton *bX, Bouton *bY, std::string texte, std::string laby) : Enigme::Enigme(ecran, texte)
 {
@@ -16,9 +15,9 @@ void EnigmeLabyrinthe::poserEnigme()
     this->ecran->clearEcran();
     this->ecran->printlnEcran(this->texteEnigme);
     this->ecran->printlnEcran(this->labyrinthe);
-    this->posX = 15;
-    this->posY = 1;
-    this->ecran->setXY(this->posX, this->posY, 'o');
+    this->posX = X_INIT;
+    this->posY = Y_INIT;
+    this->ecran->putCharXY(this->posX, this->posY, 'o');
 }
 
 void EnigmeLabyrinthe::resolutionEnigme()
@@ -83,12 +82,12 @@ void EnigmeLabyrinthe::resolutionEnigme()
         if (acquisition)
         {
             acquisition = false;
-            this->ecran->setXY(this->posX, this->posY, ' ');
+            this->ecran->putCharXY(this->posX, this->posY, ' ');
             this->posX += dX;
             this->posY += dY;
             dX = 0;
             dY = 0;
-            this->ecran->setXY(this->posX, this->posY, 'o');
+            this->ecran->putCharXY(this->posX, this->posY, 'o');
 
             if (this->posX == X_SORTIE && this->posY == Y_SORTIE) // le joueur a atteint la sortie
             {
