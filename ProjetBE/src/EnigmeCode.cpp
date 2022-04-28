@@ -12,13 +12,13 @@ EnigmeCode::EnigmeCode(Afficher *ecran, char code[4], Bouton *bA, Bouton *bB, Bo
     }
 }
 
-void EnigmeCode::afficherCode(int sel)
+void EnigmeCode::afficherCode()
 {
     this->ecran->putCharXY(LIGNE_CODE, 3, this->code[0]);
     this->ecran->putCharXY(LIGNE_CODE, 6, this->code[1]);
     this->ecran->putCharXY(LIGNE_CODE, 9, this->code[2]);
     this->ecran->putCharXY(LIGNE_CODE, 12, this->code[3]);
-    this->ecran->putCharXY(LIGNE_CODE + 1, 3 * sel + 3, '^');
+    this->ecran->putCharXY(LIGNE_CODE + 1, 3 * (this->selection) + 3, '^');
 }
 
 void EnigmeCode::poserEnigme()
@@ -29,12 +29,12 @@ void EnigmeCode::poserEnigme()
     this->code[1] = '0';
     this->code[2] = '0';
     this->code[3] = '0';
-    this->afficherCode(0);
+    this->selection = 0;
+    this->afficherCode();
 }
 
 void EnigmeCode::resolutionEnigme()
 {
-    int selection = 0;
     int dS = 0;
     bool testCode;
     bool enigme_validee = false;
@@ -48,7 +48,7 @@ void EnigmeCode::resolutionEnigme()
         {
             if (this->boutonA->acquisition().entier != 0) // appui bouton A
             {
-                if (selection < 3) // déplacement possible
+                if (this->selection < 3) // déplacement possible vers la droite
                 {
                     acquisition = true;
                     en_attente = false;
@@ -59,31 +59,31 @@ void EnigmeCode::resolutionEnigme()
             {
                 acquisition = true;
                 en_attente = false;
-                if (this->code[selection] > '0') 
+                if (this->code[this->selection] > '0') // on décrémente le chiffre sélectionné
                 {
-                    this->code[selection] -= 1;
+                    this->code[this->selection] -= 1;
                 }
                 else
                 {
-                    this->code[selection] = '9';
+                    this->code[this->selection] = '9';
                 }
             }
             else if (this->boutonX->acquisition().entier != 0) // appui bouton X
             {
                 acquisition = true;
                 en_attente = false;
-                if (this->code[selection] < '9') 
+                if (this->code[this->selection] < '9') // on incrémente le chiffre sélectionné
                 {
-                    this->code[selection] += 1;
+                    this->code[this->selection] += 1;
                 }
                 else
                 {
-                    this->code[selection] = '0';
+                    this->code[this->selection] = '0';
                 }
             }
             else if (this->boutonY->acquisition().entier != 0) // appui bouton Y
             {
-                if (selection > 0) // déplacement possible
+                if (this->selection > 0) // déplacement possible vers la gauche
                 {
                     acquisition = true;
                     en_attente = false;
@@ -103,10 +103,10 @@ void EnigmeCode::resolutionEnigme()
         if (acquisition)
         {
             acquisition = false;
-            this->ecran->putCharXY(LIGNE_CODE + 1, 3 * (selection) + 3, ' ');
-            selection += dS;
+            this->ecran->putCharXY(LIGNE_CODE + 1, 3 * (this->selection) + 3, ' ');
+            this->selection += dS;
             dS = 0;
-            this->afficherCode(selection);
+            this->afficherCode();
 
             testCode = (this->code[0] == this->codeRef[0]) && (this->code[1] == this->codeRef[1]) && (this->code[2] == this->codeRef[2]) && (this->code[3] == this->codeRef[3]);
 

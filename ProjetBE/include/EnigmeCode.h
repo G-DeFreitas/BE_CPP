@@ -12,11 +12,12 @@ class EnigmeCode : public Enigme
 private:
     char code [4];
     char codeRef [4];
+    int selection;
     Bouton *boutonA;
     Bouton *boutonB;
     Bouton *boutonX;
     Bouton *boutonY;
-    void afficherCode(int sel);
+    void afficherCode();
 public:
     /*
     Usage       : Constructeur avec initialisation du code à trouver
