@@ -22,6 +22,11 @@ private:
     Bouton *boutonY;
     int posX; // lignes
     int posY; // colonnes
+    /*
+    Usage       : Renvoie true si la case située à la position actuelle +dX, +dY est libre
+    Testé       : Ok 24/04
+    */
+    bool caseEstLibre (int dX, int dY);
 
 public:
     /*
@@ -29,11 +34,6 @@ public:
     Testé       : Ok 24/04
     */
     EnigmeLabyrinthe(Afficher *ecran, Bouton *bA, Bouton *bB, Bouton *bX, Bouton *bY, std::string texte, std::string laby);
-    /*
-    Usage       : Renvoie true si la case située à la position actuelle +dX, +dY est libre
-    Testé       : Ok 24/04
-    */
-    bool caseEstLibre (int dX, int dY);
     /*
     Usage       : Affiche le labyrinthe
     Testé       : Ok 24/04
