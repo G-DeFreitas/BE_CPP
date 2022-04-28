@@ -10,7 +10,7 @@
 class Jeu  << principale >> { 
 - std::map<std::string,Capteur*> ensembleCapteur
 - std::map<std::string,Actionneur*> ensembleActionneur
-- std::vector<Enigme> listeEnigme
+- std::map<int,Enigme*> listeEnigme
 - int indexEnigme
 +void init() 
 +void loop() 
@@ -27,6 +27,7 @@ abstract class Enigme {
 +~Enigme()
 } 
 
+class EnigmeInitiale
 class EnigmeMelodie{
 -void jouerMelodie()
 -std::vector<char> vectMelodieRef
@@ -37,11 +38,23 @@ class EnigmeLumiere{
 - float seuilLuminosite
 + EnigmeLumiere(float seuil)
 }
+class EnigmeLabyrinthe{
+- std::string labyrinthe
+- int posX, posY
+- bool caseEstLibre(int dX, int dY)
++ EnigmeLabyrinthe(std::string laby)
+}
+class EnigmeCode{
+- char code[4]
+- char codeRef[4]
+- int selection
+- void afficherCode()
++ EnigmeCode(char code[4])
+}
+class EnigmeBouton
 
 abstract class Capteur {
-+char Pin
 #virtual data acquisition()
-+Capteur(char pin)
 } 
 
 class Bouton {
@@ -49,7 +62,11 @@ class Bouton {
 +data acquisition()
 }
 
-class Accelerometre
+class Accelerometre{
+- float X_out, Y_out, Z_out
++ void initAccelerometre()
++ data acquisition()
+}
 class CapteurLuminosite{
 +CapteurLuminosite(char pin)
 +data acquisition()
@@ -64,13 +81,18 @@ class Afficher {
 +void clearEcran()
 +void printlnEcran(std::string s)
 +void printEcran(std::string s)
++ void putCharXY(unsigned char Row, unsigned char Column, char caractere)
 }
 
 
 abstract class Actionneur
 class EcranLCD
 class seeedOLED
-class Buzzer
+class Buzzer {
+- char pin
++ Buzzer(char pin)
++ void jouerNote(char note)
+}
 
 class data << (U,orchid) >> {
 bool booleen
@@ -85,16 +107,29 @@ Jeu "1" -up- "1" Actionneur
 Jeu "1" -up- "1" Afficher
 Enigme "1" -up- "1" Afficher
 
+
+Enigme <|-down- EnigmeInitiale
 Enigme <|-down- EnigmeMelodie
 Enigme <|-down- EnigmeRetourner
 Enigme <|-down- EnigmeLumiere
+Enigme <|-down- EnigmeLabyrinthe
+Enigme <|-down- EnigmeCode
+Enigme <|-down- EnigmeBouton
+
+
 
 EnigmeRetourner "1" -up- "1"  Accelerometre
 EnigmeMelodie     "1" -up- "4"  Bouton
 EnigmeMelodie     "1" -up- "1"  Buzzer
 EnigmeLumiere   "1" -up- "1"  CapteurLuminosite
+EnigmeLabyrinthe     "1" -up- "4"  Bouton
+EnigmeInitiale     "1" -up- "1"  Bouton
+EnigmeInitiale     "1" -up- "1"  Buzzer
+EnigmeCode     "1" -up- "4"  Bouton
+EnigmeBouton     "1" -up- "1"  Bouton
 
 Actionneur <|-down- Buzzer
+Actionneur <|-down- Afficher
 
 EcranLCD "1" *-down- "1" Afficher
 seeedOLED "1" *-down- "1" Afficher
