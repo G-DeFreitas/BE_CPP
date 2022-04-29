@@ -8,6 +8,7 @@
 #include "..\include\EnigmeRetourner.h"
 #include "..\include\EnigmeMelodie.h"
 #include "..\include\EnigmeLabyrinthe.h"
+#include "..\include\EnigmeLettre.h"
 #include "..\include\EnigmeCode.h"
 #include "..\include\EnigmeInitiale.h"
 #include "..\include\Afficher.h"
@@ -77,6 +78,8 @@ void Jeu::init()
     std::string texteEnMelodie = "Laisse toi porter par la musique bb";
     std::string texteEnLaby = "Aide-moi a sortir de la chambre!"; // entre 16 et 32 caractères obligatoirement
     std::string texteEnCode = "C'est quoi mon code de telephone deja ?"; 
+    std::string phraseEnLettre = "Bonjour je m'appelle Isaure";
+    std::vector<int> lettres = {0, 3, 15, 18, 21, 23, 25};
 
     // Initialisation des Enigmes
     EnigmeInitiale *enBienvenue = new EnigmeInitiale(ecran, boutonA, buzzer, texteEnBienvenue);
@@ -86,14 +89,16 @@ void Jeu::init()
     EnigmeMelodie *enMelodie = new EnigmeMelodie(ecran, melodie, boutonA, boutonB, boutonX, boutonY, buzzer, texteEnMelodie);
     EnigmeLabyrinthe *enLaby = new EnigmeLabyrinthe(ecran, boutonA, boutonB, boutonX, boutonY, texteEnLaby, (std::string)LABY);
     EnigmeCode *enCode = new EnigmeCode(ecran, code, boutonA, boutonB, boutonX, boutonY, texteEnCode);
+    EnigmeLettre *enLettre = new EnigmeLettre(ecran, boutonA, boutonB, boutonX, boutonY, "", phraseEnLettre, lettres);
 
     this->listeEnigme.insert({0, enBienvenue});
-    this->listeEnigme.insert({1, enEchauffement});
-    this->listeEnigme.insert({2, enLumos});
-    this->listeEnigme.insert({3, enRetourner});
-    this->listeEnigme.insert({4, enMelodie});
-    this->listeEnigme.insert({5, enLaby});
-    this->listeEnigme.insert({6, enCode});
+    // this->listeEnigme.insert({1, enEchauffement});
+    // this->listeEnigme.insert({2, enLumos});
+    // this->listeEnigme.insert({3, enRetourner});
+    // this->listeEnigme.insert({4, enMelodie});
+    // this->listeEnigme.insert({5, enLaby});
+    // this->listeEnigme.insert({6, enCode});
+    this->listeEnigme.insert({1, enLettre});
 
 }
 
