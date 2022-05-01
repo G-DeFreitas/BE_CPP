@@ -8,7 +8,7 @@ EnigmeLettre::EnigmeLettre(Afficher *ecran, Bouton *bA, Bouton *bB, Bouton *bX, 
     this->boutonX = bX;
     this->boutonY = bY;
     this->phrase = phrase;
-    for (int i = 0; i < vectLettre.size(); i++)
+    for (unsigned int i = 0; i < vectLettre.size(); i++)
     {
         this->lettre.insert({vectLettre[i], this->phrase[vectLettre[i]]});
         this->phrase[vectLettre[i]] = '_';
@@ -38,37 +38,83 @@ void EnigmeLettre::poserEnigme()
     }
     this->ecran->printlnEcran(' ' + this->phrase + ' ');
     this->ecran->printlnEcran("");
-    this->posX = X_INIT;
-    this->posY = Y_INIT;
 }
 
 void EnigmeLettre::resolutionEnigme()
 {
-    bool enigme_validee = false;
-    bool acquisition = false;
-    bool en_attente = true;
-    int dX = 0;
-    int dY = 0;
+    bool enigmeValidee = false;
+    bool lettreManquante;
+    unsigned int nbLettre = 0; // indique le nombre de lettre manquantes trouvées
     std::map<int, char>::iterator it;
     char caractere = 'A';
 
-    while (!enigme_validee)
+    while (!enigmeValidee)
     {
-        for (char i = 'A'; i < 'z'; i++)
+        lettreManquante = false;
+
+        // Algo de recherche : est-ce que le caractère actuel est dans la liste des lettres manquantes ?
+        for (it = this->lettre.begin(); it != this->lettre.end(); it++)
         {
-            // Chercher s'il y a i dans la map des lettres à trouver
-        //     if (this->lettre.find(i) == this->lettre.end())
-        //     {
-        //         break; // cette lettre n'est pas à chercher
-        //     }
+            if (it->second == caractere)
+            {
+                lettreManquante = true;
+            }
         }
-        
-        
+
+        if (lettreManquante)
+        {
+            // le caractère est à chercher : on n'incrémente pas immédiatement au cas où il faudrait
+            // chercher deux fois le même caractère
+            nbLettre++;
+            Serial.println(caractere);
+            placementLettre(caractere);
+
+            if (nbLettre == this->lettre.size())
+            {
+                enigmeValidee = true;
+            }
+        }
+        caractere++;
     }
-    
-    // while (this->boutonA->acquisition().entier == 0)
-    // {
-    // }
-    // this->ecran->printlnEcran(" ");
-    // this->ecran->printlnEcran("Bravo, EnigmeLettre terminee");
+}
+
+void EnigmeLettre::placementLettre(char caractere)
+{
+    bool acquisition = false;
+    bool enAttente = true;
+    bool lettreOk = false;
+    int dX = 0;
+    int dY = 0;
+
+    Serial.println("PlacementLettre");
+
+    this->posX = X_INIT_LETTRE;
+    this->posY = Y_INIT_LETTRE;
+    this->ecran->putCharXY(this->posX, this->posY, caractere);
+    while (!lettreOk)
+    {
+        yield();
+        if(enAttente)
+        {
+            if(this->boutonA->acquisition().entier != 0)
+            {
+                enAttente = false;
+                acquisition = true;
+            }
+        }
+        else
+        {
+            if (this->boutonA->acquisition().entier == 0)
+            {
+                enAttente = true;
+            }
+            
+        }
+
+        if(acquisition)
+        {
+            lettreOk = true;
+        }
+    }
+    delay(300);
 }

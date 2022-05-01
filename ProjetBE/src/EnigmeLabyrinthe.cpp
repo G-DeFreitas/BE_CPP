@@ -22,16 +22,16 @@ void EnigmeLabyrinthe::poserEnigme()
 
 void EnigmeLabyrinthe::resolutionEnigme()
 {
-    bool enigme_validee = false;
+    bool enigmeValidee = false;
     bool acquisition = false;
-    bool en_attente = true;
+    bool enAttente = true;
     int dX = 0;
     int dY = 0;
 
-    while (!enigme_validee)
+    while (!enigmeValidee)
     {
         yield();
-        if (en_attente == true)
+        if (enAttente == true)
         {
             if (this->boutonA->acquisition().entier != 0) // appui bouton A
             {
@@ -39,7 +39,7 @@ void EnigmeLabyrinthe::resolutionEnigme()
                 {
                     dY = 1;
                     acquisition = true;
-                    en_attente = false;
+                    enAttente = false;
                 }
             }
             else if (this->boutonB->acquisition().entier != 0) // appui bouton B
@@ -48,7 +48,7 @@ void EnigmeLabyrinthe::resolutionEnigme()
                 {
                     dX = 1;
                     acquisition = true;
-                    en_attente = false;
+                    enAttente = false;
                 }
             }
             else if (this->boutonX->acquisition().entier != 0) // appui bouton X
@@ -57,7 +57,7 @@ void EnigmeLabyrinthe::resolutionEnigme()
                 {
                     dX = -1;
                     acquisition = true;
-                    en_attente = false;
+                    enAttente = false;
                 }
             }
             else if (this->boutonY->acquisition().entier != 0) // appui bouton Y
@@ -66,15 +66,15 @@ void EnigmeLabyrinthe::resolutionEnigme()
                 {
                     dY = -1;
                     acquisition = true;
-                    en_attente = false;
+                    enAttente = false;
                 }
             }
         }
-        else // en_attente == false
+        else // enAttente == false
         {
             if (this->boutonA->acquisition().entier == 0 && this->boutonB->acquisition().entier == 0 && this->boutonX->acquisition().entier == 0 && this->boutonY->acquisition().entier == 0)
             {
-                en_attente = true;
+                enAttente = true;
             }
         }
 
@@ -92,7 +92,7 @@ void EnigmeLabyrinthe::resolutionEnigme()
             if (this->posX == X_SORTIE && this->posY == Y_SORTIE) // le joueur a atteint la sortie
             {
                 delay(400);
-                enigme_validee = true;
+                enigmeValidee = true;
             }
         }
     }

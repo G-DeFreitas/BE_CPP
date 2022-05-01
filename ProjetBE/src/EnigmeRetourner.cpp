@@ -17,13 +17,13 @@ void EnigmeRetourner::poserEnigme()
 void EnigmeRetourner::resolutionEnigme()
 {
     data valeurCapteur;
-    bool enigme_validee = false;
-    while (!enigme_validee)
+    bool enigmeValidee = false;
+    while (!enigmeValidee)
     {
         valeurCapteur = this->accelero->acquisition();
         if ((valeurCapteur.tab_float[0] > SEUIL_INF_1) && (valeurCapteur.tab_float[0] < SEUIL_SUP_1) && (valeurCapteur.tab_float[1] > SEUIL_INF_2) && (valeurCapteur.tab_float[1] < SEUIL_SUP_2))
         {
-            enigme_validee = true; // la boite a été retournée
+            enigmeValidee = true; // la boite a été retournée
         }
     }
     this->ecran->printlnEcran(" ");

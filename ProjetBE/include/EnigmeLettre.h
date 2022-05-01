@@ -6,8 +6,8 @@
 #include "Afficher.h"
 #include "Bouton.h"
 
-#define X_INIT 15
-#define Y_INIT 0
+#define X_INIT_LETTRE 15
+#define Y_INIT_LETTRE 0
 
 class EnigmeLettre : public Enigme
 {
@@ -20,6 +20,7 @@ private:
     Bouton *boutonY;
     int posX; // lignes
     int posY; // colonnes
+    void placementLettre(char caractere);
 public:
     EnigmeLettre(Afficher *ecran, Bouton *bA, Bouton *bB, Bouton *bX, Bouton *bY, std::string texte, std::string phrase, std::vector<int> vectLettre );
     /*

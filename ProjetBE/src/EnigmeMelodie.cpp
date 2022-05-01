@@ -43,52 +43,52 @@ void EnigmeMelodie::jouerMelodie()
 
 void EnigmeMelodie::resolutionEnigme()
 {
-    bool enigme_validee = false;
+    bool enigmeValidee = false;
     bool acquisition = false;
-    bool en_attente = true;
+    bool enAttente = true;
     std::vector<char> vecteur_test;
     std::vector<char>::iterator it_ref, i;
     it_ref = this->vectMelodieRef.begin();
 
-    while (!enigme_validee)
+    while (!enigmeValidee)
     {
         // Acquisition d'un bouton si tous les boutons sont relâchés
-        if (en_attente == true)
+        if (enAttente == true)
         {
             if (this->boutonA->acquisition().entier != 0)
             { // appui bouton A
                 vecteur_test.push_back('A');
                 this->buzzer->jouerNote(NOTE_A);
                 acquisition = true;
-                en_attente = false;
+                enAttente = false;
             }
             else if (this->boutonB->acquisition().entier != 0)
             { // appui bouton B
                 vecteur_test.push_back('B');
                 this->buzzer->jouerNote(NOTE_B);
                 acquisition = true;
-                en_attente = false;
+                enAttente = false;
             }
             else if (this->boutonX->acquisition().entier != 0)
             { // appui bouton X
                 vecteur_test.push_back('X');
                 this->buzzer->jouerNote(NOTE_X);
                 acquisition = true;
-                en_attente = false;
+                enAttente = false;
             }
             else if (this->boutonY->acquisition().entier != 0)
             { // appui bouton Y
                 vecteur_test.push_back('Y');
                 this->buzzer->jouerNote(NOTE_Y);
                 acquisition = true;
-                en_attente = false;
+                enAttente = false;
             }
         }
         else
         {
             if (this->boutonA->acquisition().entier == 0 && this->boutonB->acquisition().entier == 0 && this->boutonX->acquisition().entier == 0 && this->boutonY->acquisition().entier == 0)
             {
-                en_attente = true;
+                enAttente = true;
             }
         }
 
@@ -112,7 +112,7 @@ void EnigmeMelodie::resolutionEnigme()
 
             if (it_ref == this->vectMelodieRef.end())
             {
-                enigme_validee = true; // Fin de la mélodie atteinte -> énigme validée
+                enigmeValidee = true; // Fin de la mélodie atteinte -> énigme validée
             }
         }
     }

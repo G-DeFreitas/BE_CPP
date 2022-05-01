@@ -37,28 +37,28 @@ void EnigmeCode::resolutionEnigme()
 {
     int dS = 0;
     bool testCode;
-    bool enigme_validee = false;
+    bool enigmeValidee = false;
     bool acquisition = false;
-    bool en_attente = true;
+    bool enAttente = true;
 
-    while (!enigme_validee)
+    while (!enigmeValidee)
     {
         yield();
-        if (en_attente == true)
+        if (enAttente == true)
         {
             if (this->boutonA->acquisition().entier != 0) // appui bouton A
             {
                 if (this->selection < 3) // déplacement possible vers la droite
                 {
                     acquisition = true;
-                    en_attente = false;
+                    enAttente = false;
                     dS = 1;
                 }
             }
             else if (this->boutonB->acquisition().entier != 0) // appui bouton B
             {
                 acquisition = true;
-                en_attente = false;
+                enAttente = false;
                 if (this->code[this->selection] > '0') // on décrémente le chiffre sélectionné
                 {
                     this->code[this->selection] -= 1;
@@ -71,7 +71,7 @@ void EnigmeCode::resolutionEnigme()
             else if (this->boutonX->acquisition().entier != 0) // appui bouton X
             {
                 acquisition = true;
-                en_attente = false;
+                enAttente = false;
                 if (this->code[this->selection] < '9') // on incrémente le chiffre sélectionné
                 {
                     this->code[this->selection] += 1;
@@ -86,16 +86,16 @@ void EnigmeCode::resolutionEnigme()
                 if (this->selection > 0) // déplacement possible vers la gauche
                 {
                     acquisition = true;
-                    en_attente = false;
+                    enAttente = false;
                     dS = -1;
                 }
             }
         }
-        else // en_attente == false
+        else // enAttente == false
         {
             if (this->boutonA->acquisition().entier == 0 && this->boutonB->acquisition().entier == 0 && this->boutonX->acquisition().entier == 0 && this->boutonY->acquisition().entier == 0)
             {
-                en_attente = true;
+                enAttente = true;
             }
         }
 
@@ -113,7 +113,7 @@ void EnigmeCode::resolutionEnigme()
             if (testCode)
             {
                 delay(400);
-                enigme_validee = true;
+                enigmeValidee = true;
             }
         }
     }

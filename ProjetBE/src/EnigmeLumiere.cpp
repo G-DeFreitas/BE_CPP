@@ -19,13 +19,13 @@ void EnigmeLumiere::poserEnigme()
 void EnigmeLumiere::resolutionEnigme()
 {
     data valeurCapteur;
-    bool enigme_validee = false;
-    while (!enigme_validee)
+    bool enigmeValidee = false;
+    while (!enigmeValidee)
     {
         valeurCapteur = this->capteurLum->acquisition();
         if (valeurCapteur.flottant <= this->seuilLuminosite)
         {
-            enigme_validee = true;
+            enigmeValidee = true;
         }
     }
     this->ecran->printlnEcran(" ");
