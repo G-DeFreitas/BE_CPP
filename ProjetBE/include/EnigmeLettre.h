@@ -12,7 +12,8 @@
 class EnigmeLettre : public Enigme
 {
 private:
-    std::string phrase;
+    std::string phraseRef;
+    std::string phraseAffichee;
     std::map<int, char> lettre;
     Bouton *boutonA;
     Bouton *boutonB;
@@ -21,6 +22,7 @@ private:
     int posX; // lignes
     int posY; // colonnes
     void placementLettre(char caractere);
+    bool caseEstLibre(int dX, int dY);
 public:
     EnigmeLettre(Afficher *ecran, Bouton *bA, Bouton *bB, Bouton *bX, Bouton *bY, std::string texte, std::string phrase, std::vector<int> vectLettre );
     /*
