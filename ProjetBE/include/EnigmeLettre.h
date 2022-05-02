@@ -15,6 +15,7 @@ private:
     std::string phraseRef;
     std::string phraseAffichee;
     std::map<int, char> lettre;
+    std::map<char, int> solution;
     Bouton *boutonA;
     Bouton *boutonB;
     Bouton *boutonX;

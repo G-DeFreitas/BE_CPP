@@ -78,8 +78,8 @@ void Jeu::init()
     std::string texteEnMelodie = "Laisse toi porter par la musique bb";
     std::string texteEnLaby = "Aide-moi a sortir de la chambre!"; // entre 16 et 32 caractères obligatoirement
     std::string texteEnCode = "C'est quoi mon code de telephone deja ?"; 
-    std::string phraseEnLettre = "Bonjour je m'appelle Isaure";
-    std::vector<int> lettres = {0, 3, 15, 18, 21, 23, 25};
+    std::string phraseEnLettre = "Hello, je suis un petit elan";
+    std::vector<int> lettres = {3, 10, 16, 20, 26};
 
     // Initialisation des Enigmes
     EnigmeInitiale *enBienvenue = new EnigmeInitiale(ecran, boutonA, buzzer, texteEnBienvenue);
@@ -92,13 +92,13 @@ void Jeu::init()
     EnigmeLettre *enLettre = new EnigmeLettre(ecran, boutonA, boutonB, boutonX, boutonY, "", phraseEnLettre, lettres);
 
     this->listeEnigme.insert({0, enBienvenue});
-    // this->listeEnigme.insert({1, enEchauffement});
-    // this->listeEnigme.insert({2, enLumos});
-    // this->listeEnigme.insert({3, enRetourner});
-    // this->listeEnigme.insert({4, enMelodie});
-    // this->listeEnigme.insert({5, enLaby});
-    // this->listeEnigme.insert({6, enCode});
-    this->listeEnigme.insert({1, enLettre});
+    this->listeEnigme.insert({1, enEchauffement});
+    this->listeEnigme.insert({2, enLumos});
+    this->listeEnigme.insert({3, enRetourner});
+    this->listeEnigme.insert({4, enMelodie});
+    this->listeEnigme.insert({5, enLaby});
+    this->listeEnigme.insert({6, enCode});
+    this->listeEnigme.insert({7, enLettre});
 
 }
 

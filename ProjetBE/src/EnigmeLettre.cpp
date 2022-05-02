@@ -48,6 +48,22 @@ void EnigmeLettre::poserEnigme()
         this->phraseAffichee += ' ';
     }
     this->ecran->printlnEcran(this->phraseAffichee);
+
+    std::map<int, char>::iterator it;
+    it = this->lettre.begin();
+    for (unsigned int i = 0; i < this->phraseAffichee.length(); i++)
+    {
+        if(this->phraseAffichee[i] == '_')
+        {
+            this->solution.insert({it->second, i});
+            Serial.print(it->second);
+            Serial.print(" : ");
+            Serial.println(i);
+            it++;
+        }
+    }
+    
+    
 }
 
 void EnigmeLettre::resolutionEnigme()
@@ -57,6 +73,7 @@ void EnigmeLettre::resolutionEnigme()
     unsigned int nbLettre = 0; // indique le nombre de lettre manquantes trouvées
     std::map<int, char>::iterator it;
     char caractere = 'A';
+    std::string phraseAcompleter = this->phraseRef;
 
     while (!enigmeValidee)
     {
@@ -88,6 +105,8 @@ void EnigmeLettre::resolutionEnigme()
         }
         caractere++;
     }
+    this->ecran->clearEcran();
+    this->ecran->printlnEcran("Bravo, Enigme Lettre terminee");
 }
 
 void EnigmeLettre::placementLettre(char caractere)
@@ -95,6 +114,7 @@ void EnigmeLettre::placementLettre(char caractere)
     bool acquisition = false;
     bool enAttente = true;
     bool lettreOk = false;
+    bool verifierPosition = false;
     int dX = 0;
     int dY = 0;
 
@@ -140,6 +160,11 @@ void EnigmeLettre::placementLettre(char caractere)
                     dY = -1;
                     acquisition = true;
                     enAttente = false;
+
+                    if (this->phraseAffichee[(this->posX) * 16 + this->posY + dY] == '_')
+                    {
+                        verifierPosition = true;
+                    }
                 }
             }
         }
@@ -153,7 +178,38 @@ void EnigmeLettre::placementLettre(char caractere)
 
         if (acquisition)
         {
-            lettreOk = true;
+            acquisition = false;
+            this->ecran->putCharXY(this->posX, this->posY, ' ');
+            this->posX += dX;
+            this->posY += dY;
+            if (this->phraseAffichee[(this->posX) * 16 + this->posY] == '_')
+            {
+                verifierPosition = true;
+            }
+            dX = 0;
+            dY = 0;
+            this->ecran->putCharXY(this->posX, this->posY, caractere);
+        }
+
+        if (verifierPosition)
+        {
+            verifierPosition = false;
+            delay(200);
+
+            // La position actuelle correspond à la solution, on passe à la prochaine lettre
+            if ((this->posX * 16 + this->posY) == this->solution.find(caractere)->second)
+            {
+                lettreOk = true;
+                this->phraseAffichee[this->posX * 16 + this->posY] = caractere;
+            }
+            // La position actuelle n'est pas bonne, on remet le caractère à sa place initiale
+            else
+            {
+                this->ecran->putCharXY(this->posX, this->posY, '_');
+                this->posX = X_INIT_LETTRE;
+                this->posY = Y_INIT_LETTRE;
+                this->ecran->putCharXY(this->posX, this->posY, caractere);
+            }
         }
     }
 }
@@ -161,18 +217,18 @@ void EnigmeLettre::placementLettre(char caractere)
 bool EnigmeLettre::caseEstLibre(int dX, int dY)
 {
     bool caseLibre = 0;
-    // if (dY == 0)
-    // {
-    //     caseLibre = (this->labyrinthe[(this->posX - 2 + dX) * COLONNE_MAX + this->posY] == ' ') ? true : false;
-    // }
-    // else if (dX == 0)
-    // {
-    //     caseLibre = (this->labyrinthe[(this->posX - 2) * COLONNE_MAX + this->posY + dY] == ' ') ? true : false;
-    // }
-    // else // n'est pas censé arriver
-    // {
-    //     Serial.print("Probleme EnigmeLabyrinthe.cpp : methode caseEstLibre()");
-    //     exit(-1);
-    // }
-    return true;
+    if (dY == 0)
+    {
+        caseLibre = (this->phraseAffichee[(this->posX + dX) * 16 + this->posY] == ' ' || this->phraseAffichee[(this->posX + dX) * 16 + this->posY] == '_') ? true : false;
+    }
+    else if (dX == 0)
+    {
+        caseLibre = (this->phraseAffichee[(this->posX) * 16 + this->posY + dY] == ' ' || this->phraseAffichee[(this->posX) * 16 + this->posY + dY] == '_') ? true : false;
+    }
+    else // n'est pas censé arriver
+    {
+        Serial.print("Probleme EnigmeLettre.cpp : methode caseEstLibre()");
+        exit(-1);
+    }
+    return caseLibre;
 }
