@@ -6,7 +6,7 @@ EnigmeCode::EnigmeCode(Afficher *ecran, char code[4], Bouton *bA, Bouton *bB, Bo
     this->boutonB = bB;
     this->boutonX = bX;
     this->boutonY = bY;
-    for (int i = 0; i < 4; i++)
+    for (uint8_t i = 0; i < 4; i++)
     {
         this->codeRef[i] = code[i];
     }
@@ -35,7 +35,7 @@ void EnigmeCode::poserEnigme()
 
 void EnigmeCode::resolutionEnigme()
 {
-    int dS = 0;
+    int8_t dS = 0;
     bool testCode;
     bool enigmeValidee = false;
     bool acquisition = false;

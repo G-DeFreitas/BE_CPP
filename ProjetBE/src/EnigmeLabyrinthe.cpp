@@ -25,8 +25,8 @@ void EnigmeLabyrinthe::resolutionEnigme()
     bool enigmeValidee = false;
     bool acquisition = false;
     bool enAttente = true;
-    int dX = 0;
-    int dY = 0;
+    int8_t dX = 0;
+    int8_t dY = 0;
 
     while (!enigmeValidee)
     {
@@ -100,7 +100,7 @@ void EnigmeLabyrinthe::resolutionEnigme()
     this->ecran->printlnEcran("Bravo, Enigme Labyrinthe terminee");
 }
 
-bool EnigmeLabyrinthe::caseEstLibre(int dX, int dY)
+bool EnigmeLabyrinthe::caseEstLibre(int8_t dX, int8_t dY)
 {
     bool caseLibre = 0;
     if (dY == 0)

@@ -17,11 +17,22 @@ EnigmeLettre::EnigmeLettre(Afficher *ecran, Bouton *bA, Bouton *bB, Bouton *bX, 
 
 void EnigmeLettre::poserEnigme()
 {
-    std::string ligne, phrase;
-    int i;
     this->ecran->clearEcran();
-    phrase = this->phraseRef;
-    this->phraseAffichee = "";
+    this->preparerEnigme();
+    this->ecran->printlnEcran(this->phraseAffichee);
+}
+
+void EnigmeLettre::preparerEnigme()
+{
+    int i;
+    std::string ligne, phrase;
+    phrase = this->phraseRef;  // Phrase de référence avec des _ pour les lettres manquantes
+    this->phraseAffichee = ""; // Phrase formatée qui sera affichée
+
+    /* Formatage de l'affichage -> on veut :
+    - 14 caractères par lignes pour laisser un espace au début et à la fin
+    - sauter une ligne entre deux lignes pour permettre le déplacement du caractère
+    - un mot est affiché sur une ligne et non coupé entre deux */
     while (phrase.length() > 14)
     {
         i = 0;
@@ -38,32 +49,30 @@ void EnigmeLettre::poserEnigme()
         this->phraseAffichee = this->phraseAffichee + ' ' + ligne + ' ';
         while (this->phraseAffichee.length() % 16 != 0)
         {
-            this->phraseAffichee += ' ';
+            this->phraseAffichee += ' '; // combler une ligne avec des espaces
         }
-        this->phraseAffichee += "                ";
+        this->phraseAffichee += "                "; // Ligne libre, 16 caractères espaces
     }
     this->phraseAffichee = this->phraseAffichee + ' ' + phrase + ' ';
     while (this->phraseAffichee.length() % 256 != 0)
     {
-        this->phraseAffichee += ' ';
+        this->phraseAffichee += ' '; // combler jusqu'à la fin de l'écran, ici 256 caractères
     }
-    this->ecran->printlnEcran(this->phraseAffichee);
 
+    /* Mise à jour de la table des solutions :
+    à chaque _ affiché sur l'écran correspond une position entre 0 et 256
+    la première lettre manquante correspond à la première entrée dans la map lettre 
+    à chaque caractère, on fait correspondre l'emplacement sur l'écran */
     std::map<int, char>::iterator it;
     it = this->lettre.begin();
     for (unsigned int i = 0; i < this->phraseAffichee.length(); i++)
     {
-        if(this->phraseAffichee[i] == '_')
+        if (this->phraseAffichee[i] == '_')
         {
             this->solution.insert({it->second, i});
-            Serial.print(it->second);
-            Serial.print(" : ");
-            Serial.println(i);
             it++;
         }
     }
-    
-    
 }
 
 void EnigmeLettre::resolutionEnigme()
@@ -71,8 +80,8 @@ void EnigmeLettre::resolutionEnigme()
     bool enigmeValidee = false;
     bool lettreManquante;
     unsigned int nbLettre = 0; // indique le nombre de lettre manquantes trouvées
-    std::map<int, char>::iterator it;
     char caractere = 'A';
+    std::map<int, char>::iterator it;
     std::string phraseAcompleter = this->phraseRef;
 
     while (!enigmeValidee)
@@ -115,12 +124,13 @@ void EnigmeLettre::placementLettre(char caractere)
     bool enAttente = true;
     bool lettreOk = false;
     bool verifierPosition = false;
-    int dX = 0;
-    int dY = 0;
+    int8_t dX = 0;
+    int8_t dY = 0;
 
     this->posX = X_INIT_LETTRE;
     this->posY = Y_INIT_LETTRE;
     this->ecran->putCharXY(this->posX, this->posY, caractere);
+
     while (!lettreOk)
     {
         yield();
@@ -160,11 +170,6 @@ void EnigmeLettre::placementLettre(char caractere)
                     dY = -1;
                     acquisition = true;
                     enAttente = false;
-
-                    if (this->phraseAffichee[(this->posX) * 16 + this->posY + dY] == '_')
-                    {
-                        verifierPosition = true;
-                    }
                 }
             }
         }
@@ -182,6 +187,8 @@ void EnigmeLettre::placementLettre(char caractere)
             this->ecran->putCharXY(this->posX, this->posY, ' ');
             this->posX += dX;
             this->posY += dY;
+
+            // Le caractère se trouve sur une lettre manquante, lance le processus de vérification
             if (this->phraseAffichee[(this->posX) * 16 + this->posY] == '_')
             {
                 verifierPosition = true;
@@ -214,7 +221,7 @@ void EnigmeLettre::placementLettre(char caractere)
     }
 }
 
-bool EnigmeLettre::caseEstLibre(int dX, int dY)
+bool EnigmeLettre::caseEstLibre(int8_t dX, int8_t dY)
 {
     bool caseLibre = 0;
     if (dY == 0)

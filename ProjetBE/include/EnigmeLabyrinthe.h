@@ -20,13 +20,13 @@ private:
     Bouton *boutonB;
     Bouton *boutonX;
     Bouton *boutonY;
-    int posX; // lignes
-    int posY; // colonnes
+    uint8_t posX; // lignes
+    uint8_t posY; // colonnes
     /*
     Usage       : Renvoie true si la case située à la position actuelle +dX, +dY est libre
     Testé       : Ok 24/04
     */
-    bool caseEstLibre (int dX, int dY);
+    bool caseEstLibre (int8_t dX, int8_t dY);
 
 public:
     /*

@@ -1,11 +1,9 @@
 #include "../include/EnigmeBouton.h"
-#include <string>
 #include "..\include\Afficher.h"
 #include "..\include\Enigme.h"
 #include "..\include\Bouton.h"
 
-#include <Arduino.h>
-#include "user_interface.h"
+#include <string>
 
 EnigmeBouton::EnigmeBouton(Afficher *ecran, Bouton *b, std::string texte) : Enigme::Enigme(ecran, texte)
 {
