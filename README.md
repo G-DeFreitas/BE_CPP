@@ -44,6 +44,18 @@ class EnigmeLabyrinthe{
 - bool caseEstLibre(int dX, int dY)
 + EnigmeLabyrinthe(std::string laby)
 }
+class EnigmeLettre{
+- std::string phraseRef;
+- std::string phraseAffichee;
+- std::map<int, char> lettre;
+- std::map<char, int> solution;
+- uint8_t posX;
+- uint8_t posY;
+- void preparerEnigme();
+- void placementLettre(char caractere);
+- bool caseEstLibre(int8_t dX, int8_t dY);
++ EnigmeLettre( std::string phrase, std::vector<int> vectLettre );
+}
 class EnigmeCode{
 - char code[4]
 - char codeRef[4]
@@ -86,7 +98,6 @@ class Afficher {
 
 
 abstract class Actionneur
-class EcranLCD
 class seeedOLED
 class Buzzer {
 - char pin
@@ -115,6 +126,7 @@ Enigme <|-down- EnigmeLumiere
 Enigme <|-down- EnigmeLabyrinthe
 Enigme <|-down- EnigmeCode
 Enigme <|-down- EnigmeBouton
+Enigme <|-down- EnigmeLettre
 
 
 
@@ -123,6 +135,7 @@ EnigmeMelodie     "1" -up- "4"  Bouton
 EnigmeMelodie     "1" -up- "1"  Buzzer
 EnigmeLumiere   "1" -up- "1"  CapteurLuminosite
 EnigmeLabyrinthe     "1" -up- "4"  Bouton
+EnigmeLettre     "1" -up- "4"  Bouton
 EnigmeInitiale     "1" -up- "1"  Bouton
 EnigmeInitiale     "1" -up- "1"  Buzzer
 EnigmeCode     "1" -up- "4"  Bouton
@@ -131,7 +144,6 @@ EnigmeBouton     "1" -up- "1"  Bouton
 Actionneur <|-down- Buzzer
 Actionneur <|-down- Afficher
 
-EcranLCD "1" *-down- "1" Afficher
 seeedOLED "1" *-down- "1" Afficher
 
 Capteur <|-down- Bouton
