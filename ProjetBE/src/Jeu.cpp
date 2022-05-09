@@ -92,11 +92,11 @@ void Jeu::init()
     EnigmeLettre *enLettre = new EnigmeLettre(ecran, boutonA, boutonB, boutonX, boutonY, "", phraseEnLettre, lettres);
 
     this->listeEnigme.insert({0, enBienvenue});
-    this->listeEnigme.insert({1, enBouton});
-    this->listeEnigme.insert({2, enLumos});
-    this->listeEnigme.insert({3, enRetourner});
-    this->listeEnigme.insert({4, enMelodie});
-    this->listeEnigme.insert({5, enLaby});
+    this->listeEnigme.insert({1, enMelodie});
+    this->listeEnigme.insert({2, enLaby});
+    this->listeEnigme.insert({3, enBouton});
+    this->listeEnigme.insert({4, enLumos});
+    this->listeEnigme.insert({5, enRetourner});
     this->listeEnigme.insert({6, enCode});
     this->listeEnigme.insert({7, enLettre});
 
