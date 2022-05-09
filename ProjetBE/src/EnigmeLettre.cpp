@@ -115,7 +115,7 @@ void EnigmeLettre::resolutionEnigme()
         caractere++;
     }
     this->ecran->clearEcran();
-    this->ecran->printlnEcran("Bravo, Enigme Lettre terminee");
+    this->ecran->printlnEcran("Rhoo c’est pas  vrai, je vais  me recoucher, je te raconte   l’histoire du   mouton et de la chèvre aussi,   plus tard ");
 }
 
 void EnigmeLettre::placementLettre(char caractere)

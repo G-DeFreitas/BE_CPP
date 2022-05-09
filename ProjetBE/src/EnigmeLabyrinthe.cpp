@@ -97,7 +97,7 @@ void EnigmeLabyrinthe::resolutionEnigme()
         }
     }
     this->ecran->clearEcran();
-    this->ecran->printlnEcran("Bravo, Enigme Labyrinthe terminee");
+    this->ecran->printlnEcran("Vous l’apercevez dans la piece, il dort profond-ement, il va     vous falloir le reveiller.");
 }
 
 bool EnigmeLabyrinthe::caseEstLibre(int8_t dX, int8_t dY)

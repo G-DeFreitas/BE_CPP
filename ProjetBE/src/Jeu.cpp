@@ -71,19 +71,19 @@ void Jeu::init()
     this->ensembleActionneur.insert({"Ecran", ecran});
     this->ensembleActionneur.insert({"Buzzer", buzzer});
 
-    std::string texteEnBienvenue = "Appuyez sur le bouton A pour demarrer une nouvelle partie";
-    std::string texteEnEchauffement = "Comme echauffement, un test de coordination. Une simple pression sur le front, c'est tout ce qu'il faut pour verifier ta cognition";
-    std::string texteEnLumos = "Je suis si presente dans ta vie que tu ne me remarques que quand je suis absente. Sans moi, tes peurs resurgissent...  Chasse mon ennemi pour avancer !";
-    std::string texteEnRetourner = "Une meilleure enigme doit etre ecrite mais le but est de retourner la boite";
-    std::string texteEnMelodie = "Laisse toi porter par la musique bb";
-    std::string texteEnLaby = "Aide-moi a sortir de la chambre!"; // entre 16 et 32 caractères obligatoirement
-    std::string texteEnCode = "C'est quoi mon code de telephone deja ?"; 
-    std::string phraseEnLettre = "Hello, je suis un petit elan";
-    std::vector<int> lettres = {3, 10, 16, 20, 26};
+    std::string texteEnBienvenue = "Allumez le haut-parleur puis appuyez sur le bouton Noir pour demarrer une nouvelle partie";
+    std::string texteEnBouton = "zzz... zzz...   zzz...";
+    std::string texteEnLumos = "Hmm... Laisse... dormir... Ouvrepas... volets...";
+    std::string texteEnRetourner = "Ou est-ce que je suis ?  C’est  quoi cet endroit Fait voir";
+    std::string texteEnMelodie = "Hier soir vous  etes rentre tard et avez perdu  votre ami en fin de soirée.     Inquiet, vous   voulez le retrou-ver. Par chance vous entendez  un telephone    sonner ";
+    std::string texteEnLaby = " "; // entre 16 et 32 caractères obligatoirement
+    std::string texteEnCode = "J’ai un message sur mon portable mais j’arrive  pas a le deverr- ouiller. On a du me changer mon code hier soir..  T’as pas une idée ? "; 
+    std::string phraseEnLettre = "Non, c’est pas possible, depuis le coup de la chevre, c’est mort, je veux plus te voir ";
+    std::vector<int> lettres = {12,20,22,36,38,47,49,60,63,84}; //hvopmtbeai
 
     // Initialisation des Enigmes
     EnigmeInitiale *enBienvenue = new EnigmeInitiale(ecran, boutonA, buzzer, texteEnBienvenue);
-    EnigmeBouton *enEchauffement = new EnigmeBouton(ecran, boutonA, texteEnEchauffement);
+    EnigmeBouton *enBouton = new EnigmeBouton(ecran, boutonA, texteEnBouton);
     EnigmeLumiere *enLumos = new EnigmeLumiere(ecran, capteurLum, SEUIL_LUM, texteEnLumos);
     EnigmeRetourner *enRetourner = new EnigmeRetourner(ecran, accelero, texteEnRetourner);
     EnigmeMelodie *enMelodie = new EnigmeMelodie(ecran, melodie, boutonA, boutonB, boutonX, boutonY, buzzer, texteEnMelodie);
@@ -92,7 +92,7 @@ void Jeu::init()
     EnigmeLettre *enLettre = new EnigmeLettre(ecran, boutonA, boutonB, boutonX, boutonY, "", phraseEnLettre, lettres);
 
     this->listeEnigme.insert({0, enBienvenue});
-    this->listeEnigme.insert({1, enEchauffement});
+    this->listeEnigme.insert({1, enBouton});
     this->listeEnigme.insert({2, enLumos});
     this->listeEnigme.insert({3, enRetourner});
     this->listeEnigme.insert({4, enMelodie});

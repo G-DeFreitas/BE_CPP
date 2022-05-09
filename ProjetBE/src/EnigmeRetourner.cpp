@@ -27,5 +27,5 @@ void EnigmeRetourner::resolutionEnigme()
         }
     }
     this->ecran->printlnEcran(" ");
-    this->ecran->printlnEcran("Bravo, Enigme 3 terminee");
+    this->ecran->printlnEcran("Ahhh ok ! J’ai  des souvenirs   qui remontent");
 }

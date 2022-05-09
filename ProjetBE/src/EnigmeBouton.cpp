@@ -22,5 +22,5 @@ void EnigmeBouton::resolutionEnigme()
     {
     }
     this->ecran->printlnEcran(" ");
-    this->ecran->printlnEcran("Bravo, Enigme 1 terminee");
+    this->ecran->printlnEcran("Hmmm... ZZZ... ZZZ... ZZZ...");
 }

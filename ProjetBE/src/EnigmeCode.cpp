@@ -119,5 +119,5 @@ void EnigmeCode::resolutionEnigme()
     }
 
     this->ecran->printlnEcran(" ");
-    this->ecran->printlnEcran("Ah merci, t'as une meilleure memoire que moi");
+    this->ecran->printlnEcran("Oh put**n c’est mon ex !!       Pourquoi tu m’as laissé lui      envoyer un mes- sage !");
 }

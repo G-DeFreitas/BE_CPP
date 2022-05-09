@@ -118,5 +118,5 @@ void EnigmeMelodie::resolutionEnigme()
     }
 
     this->ecran->printlnEcran(" ");
-    this->ecran->printlnEcran("Bravo, Enigme 4 terminee");
+    this->ecran->printlnEcran("Vous etes con-  vaincu que c’est la sonnerie de votre ami. Il ne vous reste plus qu’a vous diri-ger vers l’origi-ne du bruit");
 }
