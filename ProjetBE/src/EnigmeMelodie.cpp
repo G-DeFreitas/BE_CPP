@@ -106,7 +106,7 @@ void EnigmeMelodie::resolutionEnigme()
                 // Il y a eu erreur -> réinitialisation
                 it_ref = this->vectMelodieRef.begin();
                 vecteur_test.clear();
-                delay(200);
+                delay(1000);
                 this->jouerMelodie();
             }
 
@@ -116,7 +116,6 @@ void EnigmeMelodie::resolutionEnigme()
             }
         }
     }
-
-    this->ecran->printlnEcran(" ");
-    this->ecran->printlnEcran("Vous etes con-  vaincu que c’est la sonnerie de votre ami. Il ne vous reste plus qu’a vous diri-ger vers l’origi-ne du bruit");
+    this->ecran->clearEcran();
+    this->ecran->printlnEcran("Vous etes con-  vaincu que c'estla sonnerie de  votre ami. Il nevous reste plus qu'a vous diri- ger vers l'origi-ne du bruit");
 }

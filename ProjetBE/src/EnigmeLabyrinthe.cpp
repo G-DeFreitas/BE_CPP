@@ -13,6 +13,7 @@ EnigmeLabyrinthe::EnigmeLabyrinthe(Afficher *ecran, Bouton *bA, Bouton *bB, Bout
 void EnigmeLabyrinthe::poserEnigme()
 {
     this->ecran->clearEcran();
+    this->ecran->printlnEcran("");
     this->ecran->printlnEcran(this->texteEnigme);
     this->ecran->printlnEcran(this->labyrinthe);
     this->posX = X_INIT;
@@ -97,7 +98,7 @@ void EnigmeLabyrinthe::resolutionEnigme()
         }
     }
     this->ecran->clearEcran();
-    this->ecran->printlnEcran("Vous l’apercevez dans la piece, il dort profond-ement, il va     vous falloir le reveiller.");
+    this->ecran->printlnEcran("Vous l'apercevezdans la piece,  il dort profond-ement, il va    vous falloir le reveiller.");
 }
 
 bool EnigmeLabyrinthe::caseEstLibre(int8_t dX, int8_t dY)

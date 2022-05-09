@@ -71,14 +71,14 @@ void Jeu::init()
     this->ensembleActionneur.insert({"Ecran", ecran});
     this->ensembleActionneur.insert({"Buzzer", buzzer});
 
-    std::string texteEnBienvenue = "Allumez le haut-parleur puis appuyez sur le bouton Noir pour demarrer une nouvelle partie";
-    std::string texteEnBouton = "zzz... zzz...   zzz...";
-    std::string texteEnLumos = "Hmm... Laisse... dormir... Ouvrepas... volets...";
-    std::string texteEnRetourner = "Ou est-ce que je suis ?  C’est  quoi cet endroit Fait voir";
-    std::string texteEnMelodie = "Hier soir vous  etes rentre tard et avez perdu  votre ami en fin de soirée.     Inquiet, vous   voulez le retrou-ver. Par chance vous entendez  un telephone    sonner ";
+    std::string texteEnBienvenue = "Allumez le haut-parleur puis    appuyez sur le  bouton Noir pourdemarrer une    nouvelle partie";
+    std::string texteEnBouton = "zzz... zzz...       zzz...";
+    std::string texteEnLumos = "Hmm... Laisse...dormir... Ouvre pas... volets...";
+    std::string texteEnRetourner = "Ou est-ce que jesuis ?  C'est   quoi cet endroitFait voir";
+    std::string texteEnMelodie = "Hier soir vous  etes rentre tardet avez perdu   votre ami en finde soiree.      Inquiet, vous   voulez le retrou-ver. Par chancevous entendez   un telephone    sonner ";
     std::string texteEnLaby = " "; // entre 16 et 32 caractères obligatoirement
-    std::string texteEnCode = "J’ai un message sur mon portable mais j’arrive  pas a le deverr- ouiller. On a du me changer mon code hier soir..  T’as pas une idée ? "; 
-    std::string phraseEnLettre = "Non, c’est pas possible, depuis le coup de la chevre, c’est mort, je veux plus te voir ";
+    std::string texteEnCode = "J'ai un message sur mon portablemais j'arrive   pas a le deverr-ouiller. On a dume changer mon  code hier soir  T'as pas une    idee ? "; 
+    std::string phraseEnLettre = "Non, c'est pas possible, depuis le coup de la chevre, c'est mort, je veux plus te voir ";
     std::vector<int> lettres = {12,20,22,36,38,47,49,60,63,84}; //hvopmtbeai
 
     // Initialisation des Enigmes
@@ -109,7 +109,7 @@ void Jeu::loop()
     {
         indEnigme->second->poserEnigme();
         indEnigme->second->resolutionEnigme();
-        delay(2000);
+        delay(5000);
     }
 }
 

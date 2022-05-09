@@ -115,7 +115,8 @@ void EnigmeLettre::resolutionEnigme()
         caractere++;
     }
     this->ecran->clearEcran();
-    this->ecran->printlnEcran("Rhoo c’est pas  vrai, je vais  me recoucher, je te raconte   l’histoire du   mouton et de la chèvre aussi,   plus tard ");
+    this->ecran->printlnEcran("Rhoo c'est pas  vrai, je vais   me recoucher, jete raconte      l'histoire du   mouton et de la chevre aussi,   plus tard ");
+    delay(2000);
 }
 
 void EnigmeLettre::placementLettre(char caractere)

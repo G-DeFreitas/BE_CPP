@@ -29,5 +29,5 @@ void EnigmeLumiere::resolutionEnigme()
         }
     }
     this->ecran->printlnEcran(" ");
-    this->ecran->printlnEcran("Rhoo... Quoi ?  Je ne me sou-    viens de rien.");
+    this->ecran->printlnEcran("Rhoo... Quoi ?  Je ne me sou-   viens de rien.");
 }
