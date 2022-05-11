@@ -1,9 +1,19 @@
-# BE_CPP
+# BE C++ Badier, De Freitas & Laidet
 
+## Compilation
+Nous avons utilisél'extension platformIO IDE de VSCode, si vous souhaitez l'utiliser il suffit de télécharger les sources et d'ouvrir le repertoire en tant que projet PIO puis de compiler avec PIO.
+
+En utilisant l'IDE Arduino, il faudra veiller à garder les chemins relatif pour les header ```..\include\header.h```
+
+## Interraction
+- Une fois le projet téléversé, ne pas débrancher la boite (pas de batterie), ne pas ouvrir la boite.
+- Comme indiqué sur l'écran, veillez à avoir le haut parleur allumé, à savoir l'interrupteur vers le bas.
+- Debrouillez-vous. Si vous êtes coincés référez vous au rapport pour avoir la solution des énigmes.
 
 ## Diagramme de classe
 ![alt text](https://github.com/G-DeFreitas/BE_CPP/blob/main/dclass.png)
 
+### Code planttext du diagramme de Classe
 ```
 @startuml title Boite à enigme - Diagramme de Classe
 
