@@ -1,14 +1,14 @@
 # BE C++ Badier, De Freitas & Laidet
 
 ## Compilation
-Nous avons utilisél'extension platformIO IDE de VSCode, si vous souhaitez l'utiliser il suffit de télécharger les sources et d'ouvrir le repertoire en tant que projet PIO puis de compiler avec PIO.
+Nous avons utilisé l'extension platformIO IDE de VSCode, si vous souhaitez l'utiliser il suffit de télécharger les sources et d'ouvrir le répertoire en tant que projet PIO puis de compiler avec PIO.
 
-En utilisant l'IDE Arduino, il faudra veiller à garder les chemins relatif pour les header ```..\include\header.h```
+En utilisant l'IDE Arduino, il faudra veiller à garder les chemins relatifs pour les headers ```..\include\header.h```
 
-## Interraction
-- Une fois le projet téléversé, ne pas débrancher la boite (pas de batterie), ne pas ouvrir la boite.
-- Comme indiqué sur l'écran, veillez à avoir le haut parleur allumé, à savoir l'interrupteur vers le bas.
-- Debrouillez-vous. Si vous êtes coincés référez vous au rapport pour avoir la solution des énigmes.
+## Interaction
+- Une fois le projet téléversé, ne pas débrancher la boite (pas de batterie), ne pas ouvrir la boîte.
+- Comme indiqué sur l'écran, veillez à avoir le haut-parleur allumé, à savoir l'interrupteur vers le bas.
+- Si vous êtes coincés, référez-vous au rapport pour avoir la solution des énigmes.
 
 ## Diagramme de classe
 ![alt text](https://github.com/G-DeFreitas/BE_CPP/blob/main/dclass.png)
