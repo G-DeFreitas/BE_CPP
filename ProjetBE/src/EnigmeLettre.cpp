@@ -114,9 +114,10 @@ void EnigmeLettre::resolutionEnigme()
         }
         caractere++;
     }
+    delay(4000);
     this->ecran->clearEcran();
     this->ecran->printlnEcran("Rhoo c'est pas  vrai, je vais   me recoucher, jete raconte      l'histoire du   mouton et de la chevre aussi,   plus tard ");
-    delay(2000);
+    delay(5000);
 }
 
 void EnigmeLettre::placementLettre(char caractere)

@@ -109,7 +109,7 @@ void Jeu::loop()
     {
         indEnigme->second->poserEnigme();
         indEnigme->second->resolutionEnigme();
-        delay(5000);
+        delay(10000);
     }
 }
 
