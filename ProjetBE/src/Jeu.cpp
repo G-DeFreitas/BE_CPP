@@ -74,12 +74,12 @@ void Jeu::init()
     std::string texteEnBienvenue = "Allumez le haut-parleur puis    appuyez sur le  bouton Noir pourdemarrer une    nouvelle partie";
     std::string texteEnBouton = "zzz... zzz...       zzz...";
     std::string texteEnLumos = "Hmm... Laisse...dormir... Ouvre pas... volets...";
-    std::string texteEnRetourner = "Ou est-ce que jesuis ?  C'est   quoi cet endroitFait voir";
+    std::string texteEnRetourner = "Hein, ou est-ce que je suis ?   C'est quoi cet  endroit ? Fais  moi voir sur    quoi j'ai dormi";
     std::string texteEnMelodie = "Hier soir vous  etes rentre tardet avez perdu   votre ami en finde soiree.      Inquiet, vous   voulez le retrou-ver. Par chancevous entendez   un telephone    sonner ";
     std::string texteEnLaby = " "; // entre 16 et 32 caractères obligatoirement
     std::string texteEnCode = "J'ai un message sur mon portablemais j'arrive   pas a le deverr-ouiller. On a dume changer mon  code hier soir  T'as pas une    idee ? "; 
     std::string phraseEnLettre = "Non, c'est pas possible, depuis le coup de la chevre, c'est mort, je veux plus te voir ";
-    std::vector<int> lettres = {12,20,22,36,38,47,49,60,63,84}; //hvopmtbeai
+    std::vector<int> lettres = {20,36,38,47,49,60,63,84}; //hvopmtbi
 
     // Initialisation des Enigmes
     EnigmeInitiale *enBienvenue = new EnigmeInitiale(ecran, boutonA, buzzer, texteEnBienvenue);

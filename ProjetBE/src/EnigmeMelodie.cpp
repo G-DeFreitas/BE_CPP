@@ -14,6 +14,7 @@ void EnigmeMelodie::poserEnigme()
 {
     this->ecran->clearEcran();
     this->ecran->printlnEcran(this->texteEnigme);
+    delay(5000);
     this->jouerMelodie();
 }
 
